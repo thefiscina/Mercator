@@ -1,0 +1,30 @@
+{
+  "name": "TESTE",
+  "tablesLabelCounter": 0,
+  "uuidCounter": 0,
+  "categories": {
+    "list": []
+  },
+  "rowSpacing": 8,
+  "version": 1,
+  "venueType": "BOOTHS",
+  "sectionScaleFactor": 0,
+  "subChart": {
+    "height": 500,
+    "width": 924,
+    "tables": [],
+    "texts": [],
+    "rows": [],
+    "shapes": [],
+    "booths": [],
+    "generalAdmissionAreas": [],
+    "sections": [],
+    "focalPoint": null,
+    "backgroundImage": null,
+    "referenceChart": null,
+    "snapOffset": {
+      "x": 2,
+      "y": 2
+    }
+  }
+}

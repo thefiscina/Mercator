@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="./frame/flaticon.css">
+    <script src="./frame/jquery.1.11.0.min.js"></script>
+    <script src="./frame/bootstrap.min.js"></script>
+    <script src="./frame/fontfaceobserver.2.0.9.standalone.js"></script>
+    <!-- <link href="./frame/css" rel="stylesheet"> -->
+    <!-- <link href="./frame/css2" rel="stylesheet"> -->
+    <link rel="stylesheet" href="./frame/font-seatsdesigner.css">
+    <link rel="stylesheet" href="./frame/bootstrap.css">
+    <link rel="stylesheet" href="./frame/chartDesigner.css">
+    <!-- <link rel="stylesheet" href="./frame/gui.css"> -->
+    <link rel="stylesheet" href="./frame/DesignerApp.css">
+    <script src="./mercator.js"></script>
+    <script>
+        let seatsioNoConflict = mercator;
+    </script>
+    <script src="./frame/less.1.7.0.min.js"></script>
+    <script src="../mercator/modules/initiate.js"></script>
+    <script src="../mercator/modules/start_modules.js"></script>
+    <script src="../mercator/modules/internal.js"></script>
+    <!-- <script src="./frame/chartDesigner_old.js"></script> -->
+    <script src="./frame/chartDesignerIframe.js"></script>
+</head>
+
+<body style="margin: 0; padding: 0;">
+    <script src="./frame/errorHandling.js"></script>
+    <div id="chart"></div>
+    <div id="designerApp"></div>
+    <div id="chartDesignerWrapper">
+        <form method="post" class="form-inline" id="chartForm">
+            <div id="alert">
+                <div class="message">
+                    <span class="msg-content"></span>
+                    <button id="ok-got-it-btn" class="btn btn-small btn-custom-transparent-whiteFg">
+                        <i class="fa fa-check"></i> &nbsp; <span class="translation-placeholder"
+                            data-placeholder="ok"></span>
+                    </button>
+                </div>
+                <div class="dismiss-alert">
+                    <i class="fa fa-close dismiss-alert"></i>
+                </div>
+            </div>
+            <div class="chartdesigner svgContainer" id="drawing"></div>
+        </form>
+    </div>
+    <div id="renderingError">
+        <div>
+            <div class="message"></div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            initChartDesignerIframe();
+        });
+    </script>
+</body>
+</html>

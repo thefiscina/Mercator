@@ -1,0 +1,14 @@
+<div class="preloader">
+    <div class="loader">
+        <div class="loader__figure"></div>
+        <p class="loader__label">Mercator maps</p>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper">
+    <app-header *ngIf="checkUrl(router.url)"></app-header>
+    <app-nav-bar *ngIf="checkUrl(router.url)"></app-nav-bar>
+    <router-outlet></router-outlet>
+</div>

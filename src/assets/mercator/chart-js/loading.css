@@ -1,0 +1,143 @@
+#designerLoader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: #f5f5f5;
+}
+
+.mercator-loading-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    position: absolute;
+    min-width: 150px;
+    min-height: 150px;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: mercator-loading-screen-fade-in 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mercator-loading-screen.hide {
+    opacity: 0;
+}
+
+.mercator-loading-screen.hide .loading-indicator {
+    opacity: 0;
+}
+
+.mercator-loading-screen .loading-indicator {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    animation: mercator-loading-indicator-zoom-in 1s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: opacity 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mercator-loading-screen .loading-indicator > .custom-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mercator-loading-screen .loading-indicator > .bouncy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 3px solid;
+    animation: mercator-loading-bounce 2s infinite cubic-bezier(0.77, 0, 0.175, 1) backwards;
+}
+
+.mercator-loading-screen .loading-indicator > .bouncy.alt {
+    border-width: 8px;
+    animation: mercator-loading-ripple 4s infinite ease-in-out backwards;
+    filter: blur(2px);
+}
+
+.mercator-loading-screen .loading-indicator > .bouncy.ball-1.alt {
+    animation-delay: 0.5s;
+}
+
+.mercator-loading-screen .loading-indicator > .bouncy.ball-2 {
+    animation-delay: -1s;
+}
+
+.mercator-loading-screen .loading-indicator > .bouncy.ball-2.alt {
+    animation-delay: -0.5s;
+}
+
+.mercator-loading-screen.light-bg .loading-indicator > .bouncy {
+    border-color: hsla(0, 0%, 5%, 0.6);
+    background-color: hsla(0, 0%, 5%, 0.3);
+}
+
+.mercator-loading-screen.dark-bg .loading-indicator > .bouncy {
+    border-color: hsla(0, 0%, 90%, 0.6);
+    background-color: hsla(0, 0%, 90%, 0.3);
+}
+
+.mercator-loading-screen.light-bg .loading-indicator > .bouncy.alt {
+    border-color: hsla(0, 0%, 5%, 1);
+    background-color: hsla(0, 0%, 90%, 1);
+}
+
+.mercator-loading-screen.dark-bg .loading-indicator > .bouncy.alt {
+    border-color: hsla(0, 0%, 90%, 1);
+    background-color: hsla(0, 0%, 5%, 1);
+}
+
+@keyframes mercator-loading-bounce {
+    0%, 100% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+
+@keyframes mercator-loading-ripple {
+    0% {
+        transform: scale(0.4);
+        opacity: 0;
+    }
+    10% {
+        transform: scale(0.8);
+        opacity: 0.05;
+    }
+    100% {
+        transform: scale(5);
+        opacity: 0;
+    }
+}
+
+@keyframes mercator-loading-indicator-zoom-in {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes mercator-loading-screen-fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
