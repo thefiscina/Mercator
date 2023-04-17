@@ -14,8 +14,8 @@ function renderError() {
 
 function hideAllDivsExceptError() {
     document.querySelector('#chart').style.display = 'none';
-    document.querySelector('#chartDesignerWrapper').style.display = 'none';
-    document.querySelector('#designerApp').style.display = 'none';
+    document.querySelector('#frameIdMercator').style.display = 'none';
+    document.querySelector('#mercatorStl').style.display = 'none';
 }
 
 function showRenderingError() {

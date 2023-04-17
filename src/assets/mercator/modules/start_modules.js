@@ -106,7 +106,7 @@ const roundTo = (t, e = 0) => {
     };
 mercator.isMac = window.navigator.platform.toUpperCase().indexOf("MAC") >= 0, mercator.isChrome = navigator.userAgent.indexOf("Chrome") >= 0, mercator.isSafari = navigator.userAgent.indexOf("Safari") >= 0 && !mercator.isChrome;
 console.log(mercator);
-mercator.SeatsioStorage = class {
+mercator.mercatorStorage = class {
     constructor(o, t) {
         this.data = {
             ...this.legacyData(),
@@ -146,7 +146,7 @@ mercator.SeatsioStorage = class {
 };
 
 mercator.ChartDesigner = function (t, e, s, i, o, a, r, n, h, c, l, u, p, C, g, d, b, S, y, f, w, D) {
-    this.chartLoaded = !1, this.containerId = t, this.chartKey = e, this.openDraftDrawing = s, this.openLatestDrawing = f, this.v2Client = new mercator.V2Client(r, a), this.publicApiUrl = n, this.dataCollectorUrl = h, this.secretKey = i, this.workspaceKey = a, this.onChartCreated = C, this.onChartUpdated = g, this.onChartPublished = d, this.onExitRequested = S, this.onLocalSettingChanged = y, this.onStatusChanged = b, this.featureConfig = new mercator.FeatureConfig(l), this.messages = new mercator.Messages(u).replacePlaceholders($("#chartForm")).exposeOnGlobalScope(), this.canvasColorScheme = D, this.mode = p, this.width = mercator.ChartDesigner.SIZE, this.height = mercator.ChartDesigner.SIZE, this.paper = Raphael(this.containerId, this.width, this.height), this.svg = SVG("#" + this.containerId + " svg"), this.drawer = new Drawer(this), this.shiftWasPressed = !1, this.ctrlWasPressed = !1, this.altWasPressed = !1, this.spacebarIsPressed = !1, this.enableCanvasGrabber = !1, this.rightMouseButton = !1, this.debug = !1, this.mouseDown = null, this.mustNextCanvasClickBeIgnored = null, this.canvasCenter = new mercator.Point(this.width / 2, this.height / 2), this.labelsShown = !1, this.rowLabelsShown = !0, this.loadingFromJson = !1, this.state = null, this.status = null, this.setupCanvasEventHandlers(), this.applyBaseColor(c), this.savedZoomAndPan = null, this.ignoredLabelEditingWarnings = new Set, this.hotkeyUsageLogger = null, this.shouldShowLegacySocialDistancingCheckbox = !1, this.storage = new mercator.SeatsioStorage(this, w), this.lastGroupTool = {
+    this.chartLoaded = !1, this.containerId = t, this.chartKey = e, this.openDraftDrawing = s, this.openLatestDrawing = f, this.v2Client = new mercator.V2Client(r, a), this.publicApiUrl = n, this.dataCollectorUrl = h, this.secretKey = i, this.workspaceKey = a, this.onChartCreated = C, this.onChartUpdated = g, this.onChartPublished = d, this.onExitRequested = S, this.onLocalSettingChanged = y, this.onStatusChanged = b, this.featureConfig = new mercator.FeatureConfig(l), this.messages = new mercator.Messages(u).replacePlaceholders($("#chartForm")).exposeOnGlobalScope(), this.canvasColorScheme = D, this.mode = p, this.width = mercator.ChartDesigner.SIZE, this.height = mercator.ChartDesigner.SIZE, this.paper = Raphael(this.containerId, this.width, this.height), this.svg = SVG("#" + this.containerId + " svg"), this.drawer = new Drawer(this), this.shiftWasPressed = !1, this.ctrlWasPressed = !1, this.altWasPressed = !1, this.spacebarIsPressed = !1, this.enableCanvasGrabber = !1, this.rightMouseButton = !1, this.debug = !1, this.mouseDown = null, this.mustNextCanvasClickBeIgnored = null, this.canvasCenter = new mercator.Point(this.width / 2, this.height / 2), this.labelsShown = !1, this.rowLabelsShown = !0, this.loadingFromJson = !1, this.state = null, this.status = null, this.setupCanvasEventHandlers(), this.applyBaseColor(c), this.savedZoomAndPan = null, this.ignoredLabelEditingWarnings = new Set, this.hotkeyUsageLogger = null, this.shouldShowLegacySocialDistancingCheckbox = !1, this.storage = new mercator.mercatorStorage(this, w), this.lastGroupTool = {
         row: "single",
         section: "polygon",
         ga: "rectangle",
@@ -162,7 +162,7 @@ mercator.ChartDesigner = function (t, e, s, i, o, a, r, n, h, c, l, u, p, C, g, 
         "RectTable.chairs": Object.assign({}, mercator.RectTable.defaultDistribution),
         "RoundTable.chairs": mercator.RoundTable.defaultNumberOfChairs,
         "RowDrawing.rowBlockStyle": "normal"
-    }, this.subChartStats = {}, this.globalStats = {}, this.selectedObjectsUuid = [], this.showAllTools = !1, this.designerAppState = {
+    }, this.subChartStats = {}, this.globalStats = {}, this.selectedObjectsUuid = [], this.showAllTools = !1, this.mercatorStlState = {
         firstTimeTutorialDone: this.storage.getItem("v2.firstTimeTutorialDone")
     }, this.overlayMessages = {}, this.busyIndicators = [], this.abTest = Math.random() > .5, this.uiEvents = new mercator.UIEvents(this), this.imageUploader = new mercator.ImageUploader(this), this.keyboard = new mercator.Keyboard(this), this.clipboard = new mercator.Clipboard(this), mercator.designer = this, this.layers = new mercator.Layers(this).createLayer("backgroundFillLayer").createLayer("abstractFloorsLayer").createLayer("backgroundLayer").createLayer("shapesBackgroundLayer").createLayer("sectionsLayer").createLayer("overlayBackgroundLayer").createLayer("sectionContentsLayer").createLayer("objectsLayer").createLayer("textsLayer").createLayer("foregroundLayer").createLayer("shapesForegroundLayer").createLayer("aboveAllBackgroundLayer").createLayer("tempDrawingsLayer").createLayer("selectionRectanglesLayer").createLayer("transformationHandlesLayer").createLayer("nodesLayer").createLayer("overlayIconsLayer").createLayer("guides"), this.zoomer = new mercator.Zoomer(this.onZoom.bind(this)), this.panner = new mercator.Panner, this.chairMousePointer = new mercator.ChairMousePointer(this).init(), this.selector = new mercator.ObjectsSelector(this), this.itemSelector = new mercator.ItemSelector(this), this.brushSelector = new mercator.BrushSelector(this), this.helperLines = new mercator.HelperLines(this), this.categories = new mercator.Categories(this), this.tableMousePointer = new mercator.TableMousePointer(this), this.boothMousePointer = new mercator.BoothMousePointer(this), this.iconMousePointer = new mercator.IconMousePointer(this), this.version = mercator.version, this.subChartFloors = new mercator.SubChartFloors(this).init(), this.masterSubChart = this.subChartFloors.newSubChart(), this.sectionSubChart = null, this.venueTypeSwitcher = new mercator.VenueTypeSwitcher(this), this.venueType = "MIXED", this.designerKey = o, this.history = new mercator.History(this.onActiveStateChanged.bind(this)), this.statusChanger = new mercator.StatusChanger(this), this.saver = new mercator.Saver(this), this.stateChangeDetector = this.createStateChangeDetector(), this.textsBboxCache = new mercator.TextsBboxCache(this), this.alert = new mercator.Alert($("#alert")), this.features = new mercator.Features(this).withModifier(this.venueTypeSwitcher).withModifier(this.featureConfig), this.showPrefixes = !1, this.referenceChartVisible = !0, this.showReferenceChartAbove = !1, this.setDefaultState()
 }, mercator.ChartDesigner.prototype.render = function () {
@@ -595,7 +595,7 @@ mercator.ChartDesigner = function (t, e, s, i, o, a, r, n, h, c, l, u, p, C, g, 
         this.requestedRenderUI = !1, this.renderUI()
     }))
 }, mercator.ChartDesigner.prototype.renderUI = function () {
-    this.changingView || (this.renderedUIonThisFrame ? this.requestRenderUI() : (ReactDOM.render(React.createElement(DesignerApp, this.getUIState()), document.getElementById("designerApp")), this.renderedUIonThisFrame = !0, requestAnimationFrame(() => {
+    this.changingView || (this.renderedUIonThisFrame ? this.requestRenderUI() : (ReactDOM.render(React.createElement(mercatorStl, this.getUIState()), document.getElementById("mercatorStl")), this.renderedUIonThisFrame = !0, requestAnimationFrame(() => {
         this.renderedUIonThisFrame = !1
     })))
 }, mercator.ChartDesigner.prototype.addOverlayMessage = function (t, e, s = "info") {
@@ -614,10 +614,10 @@ mercator.ChartDesigner = function (t, e, s, i, o, a, r, n, h, c, l, u, p, C, g, 
     let e = !1;
     Object.keys(t).forEach(s => {
         let i = t[s];
-        this.designerAppState[s] !== i && (this.designerAppState[s] = i, e = !0)
+        this.mercatorStlState[s] !== i && (this.mercatorStlState[s] = i, e = !0)
     }), e && this.renderUI()
 }, mercator.ChartDesigner.prototype.uiStateToggle = function (t, e) {
-    return this.designerAppState[t] = this.designerAppState[t] === e ? null : e, this.renderUI(), this.designerAppState[t]
+    return this.mercatorStlState[t] = this.mercatorStlState[t] === e ? null : e, this.renderUI(), this.mercatorStlState[t]
 }, mercator.ChartDesigner.prototype.busyIndicatorOn = function (t) {
     this.busyIndicators.includes(t) || (this.busyIndicators.push(t), this.renderUI())
 }, mercator.ChartDesigner.prototype.busyIndicatorOff = function (t) {
@@ -644,7 +644,7 @@ mercator.ChartDesigner = function (t, e, s, i, o, a, r, n, h, c, l, u, p, C, g, 
 }, mercator.ChartDesigner.prototype.getUIState = function () {
     return {
         abTest: Object.assign({}, this.abTest),
-        uiState: Object.assign({}, this.designerAppState),
+        uiState: Object.assign({}, this.mercatorStlState),
         busyIndicators: this.busyIndicators.slice(),
         overlayMessages: Object.assign({}, this.overlayMessages),
         designer: {
@@ -899,451 +899,7 @@ mercator.V2Client = function (e, t) {
 };
 //TRADUÇÃO
 mercator.Language = {};
-mercator.Language.pt = {
-    "hand-o-up": "Selecionar",
-    "select-brush": "Escova de seleção",
-    "select-seats": "Selecionar assentos",
-    "select-sameType": "Selecione o mesmo tipo",
-    node: "Nó",
-    labeling: "Rotulagem",
-    row: "Fila",
-    "row-single": "Fila",
-    "row-segmented": "Fila com segmentos",
-    "row-multiple": "Várias filas",
-    "row-intertwined": "Várias filas",
-    seat: "Assento",
-    chair: "Cadeira",
-    bench: "Banco",
-    stool: "Tamborete",
-    table: "Mesa",
-    section: "Seção",
-    "section-polygon": "Seção",
-    "section-rectangle": "Seção retangular",
-    booth: "Booth",
-    generalAdmission: "Área",
-    "ga-rectangle": "Área Retangular",
-    "ga-ellipse": "Área Elíptica",
-    "ga-polygon": "Área Poligonal",
-    "shape-rectangle": "Retângulo",
-    "shape-ellipse": "Elipse",
-    "shape-polygon": "Polígono",
-    "table-rectangle": "Mesa Retangular",
-    "table-round": "Mesa Redonda",
-    rectangle: "Retângulo",
-    circle: "Círculo",
-    text: "Texto",
-    image: "Imagem",
-    focalpoint: "Ponto focal",
-    hand: "Mão",
-    "normalize-rows": "Endireitar e espaço uniformemente",
-    "align-left": "Alinhar à esquerda",
-    "align-center": "Alinhar ao centro",
-    "align-right": "Alinhar à direita",
-    "align-top": "Alinhar o topo",
-    "align-middle": "Alinhar o meio",
-    "align-bottom": "Alinhar o fundo",
-    "space-horizontally": "Espaço horizontalmente",
-    "space-vertically": "Espaço verticalmente",
-    straighten: "Endireitar",
-    "space-evenly": "Espaço uniformemente",
-    "flip-horizontal": "Rodar na horizontal",
-    "flip-vertical": "Rodar na vertical",
-    duplicate: "Duplicar",
-    delete: "Excluir",
-    viewFromSeats: "Vista dos assentos",
-    object: "Objeto",
-    spacebar: "Espaço",
-    tables: "Mesa |||| Mesas",
-    rows: "Fila |||| Filas",
-    seats: "Assento |||| Assentos",
-    objects: "Objeto |||| Objetos",
-    booths: "Booth |||| Booths",
-    images: "Imagem |||| Imagens",
-    "select-hint": "![Click & drag] seleciona múltiplos objetos",
-    "selected-hint": "![Shift + Click] para adicionar ou remover objetos da seleção. ![%{meta}D] para desmarcar",
-    move: "Mover",
-    "move-hint": "![Shift] ajuste para um ângulo de 45º",
-    rotate: "Girar",
-    "rotate-hint": "![Shift] ajuste para um ângulo de 15º",
-    "node-hint": "![Click] para selecionar um objeto e editar seus nós",
-    "nodeEdit-hint": "![Click & drag] no nó para movê-lo ![Click] em um lado para criar um novo nó ![Right Click] no nó para excluí-lo ![Alt] para ocultar as alças laterais",
-    "labeling-hint": "![Click & drag] seleciona múltiplos objetos e atribui rótulos automaticamente",
-    "select-seats-hint": "![Click & drag] seleciona assentos individuais",
-    "selected-seats-hint": "![Shift + Click] para adicionar ou remover assentos da seleção. ![%{meta}D] para desmarcar",
-    "brush-selected-hint": "![Shift + Click] para adicionar objetos à seleção. ![%{meta}D] para desmarcar",
-    "select-sameType-hint": "![Click] selecionar objetos do mesmo tipo",
-    "selected-sameType-hint": "![Click] selecionar do mesmo tipo ![Shift + Click] adicionar ou remover tipos da seleção ![%{meta}D] para desmarcar",
-    "row-hint": "![Click & drag] desenhe uma linha ![Shift] ajuste para um ângulo de 15º ![Alt] desativa o ajuste automático",
-    "row-segmented-hint": "![Click] coloque um nó de linha ![Click] no último assento para terminar o sorteio ![Shift] ajuste para um ângulo de 15º ![Alt] desativa o ajuste automático",
-    "row-multiple-hint": "![Click & drag] desenhe a primeira linha ![Shift] ajuste para um ângulo de 15º ![Alt] desativa o ajuste automático",
-    "row-multiple-extending-hint": "Arraste para definir o número de linhas e ![Click] para finalizar o desenho ![Shift] alinhar para os lados",
-    "clickToDraw-hint": "![Click] desenha um(a) %{object} ![Alt] desativa o ajuste automático",
-    "clickDragToDraw-hint": "![Click & drag] desenha um(a) %{object} ![Shift] restringir proporções ![Alt] desativa o ajuste automático",
-    "shape-hint": "![Click & drag] desenha uma forma ![Shift] mantém proporção largura/comprimento uniforme ![Alt] desativa o ajuste automático",
-    "nodesWithModifiers-hint": "![Click] insere um nó ![Right Click] remove o último nó ![Shift] ajusta ao ângulo de 45º ![Alt] desativa o ajuste automático",
-    "focalpoint-hint": 'O Ponto Focal é usado pelo recurso "melhores assentos disponíveis", em que os assentos mais próximos do ponto são considerados os melhores',
-    "icon-hint": "![Click] inserir ícone",
-    "hand-hint": "![Click & drag] para mover o documento. ![Spacebar] para usar em qualquer outra ferramenta",
-    "image/png": "PNG",
-    "image/gif": "GIF",
-    "image/jpeg": "JPEG",
-    "application/pdf": "PDF",
-    "palette-light-day": "Melhor para fundos claros",
-    "palette-light-night": "Melhor para fundos escuros",
-    "palette-light-day-night": "Boa para todos os tipos de fundos",
-    "publish-draft-question": "Publicar este rascunho?",
-    "publish-draft-description": "Você está prestes a substituir o mapa atualmente publicado por esta versão para todos os eventos deste mapa.",
-    "action-cannot-be-undone": "Não será possível desfazer esta ação.",
-    "chart-has-unresolved-warnings": "Este mapa tem avisos não resolvidos",
-    "chart-has-unresolved-errors": "Este gráfico contém erros não resolvidos que impedem sua publicação",
-    "untitled-chart": "Mapa sem título",
-    publishDraftError: "Ocorreu algum erro durante a publicação do seu rascunho!",
-    cancel: "Cancelar",
-    exit: "Sair",
-    draft: "Rascunho",
-    published: "Publicado",
-    "new-category": "Nova categoria",
-    "save-and-exit": "Salvar e sair",
-    "exit-section": "Sair da seção",
-    undo: "Desfazer",
-    redo: "Refazer",
-    "snap-to-grid": "Ajustar à grade",
-    "show-section-contents": "Mostrar conteúdo da seção",
-    "show-section-contents-disabled": "O conteúdo das seções só pode ser exibido se a escala da seção for 100%.",
-    transform: "Transformar",
-    smoothing: "Suavização",
-    tension: "Tensão",
-    "show-row-labels": "Mostrar rótulos da fila",
-    "always-show-labels": "Sempre mostrar rótulos",
-    "view-from-seats": "Vista dos assentos",
-    "take-tour": "Faça o tour de 60 segundos",
-    "get-started": "Começar",
-    next: "Próximo",
-    skip: "Pular",
-    welcome: "Bem-vindo ao",
-    "main-toolbar": "Barra de ferramentas principal",
-    "main-toolbar-tutorial-1": "Saia do designer, edite o nome do documento ou verifique a última versão salva ou publicada.",
-    "main-toolbar-tutorial-2": "Ações do nível de designer e alternânticas entre desfazer/refazer, ajustar à grade, mostrar todos os rótulos e mostrar vista a partir dos assentos.",
-    "main-toolbar-tutorial-3": "Ações contextuais de objetos, como rodar, duplicar e excluir.",
-    tools: "Ferramentas",
-    "tools-tutorial-1": "Algumas ferramentas estão agrupadas, indicadas por um ícone %{icon}.",
-    "tools-tutorial-2": "Clique numa ferramenta para trocar para ela a fim de selecionar, desenhar, modificar, rotular objetos ou definir um ponto focal.",
-    "object-inspector": "Inspetor de Objetos",
-    "inspector-tutorial-1": "Permite alterar propriedades, categorizar e rotular os objetos selecionados.",
-    "inspector-tutorial-2": "Quando não houver nada selecionado, são mostradas as propriedades e estatísticas do mapa.",
-    "status-and-hints": "Status e Dicas",
-    "status-and-hints-tutorial": "Veja informações e dicas sobre a ferramenta atual para aprender truques de usuários avançados.",
-    "numeric-input-scrubber-hint": "Clique e arraste para alterar o valor",
-    close: "Fechar",
-    "duplicate-objects": "Duplicar objetos",
-    label: "Rótulo",
-    "duplicate-objects-sections": "Duplicar objetos nas seções",
-    "num-sections-duplicate-object": "%{numSections} seções rotuladas de <code>%{sectionLabel}</code> contêm um objeto rotulado de <code>%{objectLabel}</code>",
-    "num-unlabeled-sections-duplicate-object": "%{numSections} seções não rotuladas contêm um objeto rotulado de <code>%{objectLabel}</code>",
-    "chart-duplicate-objects": "Este mapa possui objetos duplicados.",
-    "chart-duplicate-objects-description": "Objetos duplicados resultarão em reservas errôneas ou duplicadas de assentos.",
-    "chart-no-duplicate-objects": "Não há objetos duplicados neste mapa.",
-    "uncategorized-objects": "Objeto sem categoria |||| Objetos sem categoria",
-    "unlabeled-objects": "Objeto sem rótulo |||| Objetos sem rótulo",
-    "object-type": "Tipo de objeto",
-    unlabeled: "Sem rótulo",
-    "container-has-objects-count": "Este(a) %{container} tem %{count} %{object}.",
-    "container-no-uncategorized-objects": "Não há objetos sem categoria neste(a) %{container}.",
-    "uncategorized-objects-description": "Não é possível atribuir preço a objetos sem categoria.",
-    chart: "Mapa",
-    "unlabeled-objects-description": "Objetos sem rótulo resultarão em reservas errôneas ou duplicadas de assentos pelos compradores de ingressos.",
-    "container-no-unlabeled-objects": "Não há objetos sem rótulo neste(a) %{container}.",
-    "new-chart": "Novo mapa",
-    "without-sections": "Sem seções",
-    "without-sections-1": "Mais adequado para estabelecimentos que acomodam menos de 1000 pessoas.",
-    "with-sections-and-floors": "Com seções e pisos",
-    "with-sections-1": "Ideal para teatros, estádios, salas de concertos e outros estabelecimentos com setores.",
-    key: "Legenda",
-    edit: "Editar",
-    accept: "Aceitar",
-    "multiple-values": "Múltiplos valores",
-    "colorblind-safe": "Adequado para daltônicos",
-    "colorblind-safe-text": "Usuários com os tipos de daltonismo mais comuns podem diferenciar cores desta paleta com confiança suficiente.",
-    "saving-failed": "Falha ao salvar",
-    "read-only": "Somente leitura",
-    saved: "Salvo",
-    "last-saved": "Salvo pela última vez",
-    "save-failed-warning": "Ocorreu um erro ao salvar automaticamente. Tentaremos novamente em alguns segundos",
-    "read-only-warning": "Este mapa não pode ser modificado. Quaisquer mudanças realizadas nele serão perdidas",
-    "published-warning": "Esta é a versão publicada do mapa. As alterações serão salvas em um rascunho, que você poderá publicar ou descartar",
-    "published-with-draft-warning": "Existe uma versão publicada deste mapa, mas você está editando um rascunho, que poderá ser publicado ou descartado",
-    "draft-warning": "O mapa é um rascunho salvo",
-    "saved-warning": "O mapa está salvo",
-    publish: "Publicar",
-    preview: "Prévia",
-    "upload-file-type-not-allowed": "Este tipo de arquivo não é aceito. Por favor, carregue %{filetypes}",
-    "upload-max-file-size-exceeded": "Por favor, carregue uma imagem menor do que %{filesize}",
-    "images-count": "%{count} imagens diferentes",
-    "upload-message": "Solte uma imagem aqui ou clique para carregar",
-    remove: "Remover",
-    "filesize-smaller-than": "Menor do que %{filesize}",
-    "zoom-out": "Afastar imagem",
-    "zoom-in": "Ampliar imagem",
-    "objects-selected-count": "%{smart_count} objeto selecionado |||| %{smart_count} objetos selecionados",
-    tool: "Ferramenta",
-    labels: "Rótulos",
-    direction: "Direção",
-    layout: "Layout",
-    "seats-on-all-sides": "Assentos em todos os lados",
-    "seats-on-both-sides": "Assentos em ambos os lados",
-    "seats-on-one-side": "Assentos em um único lado",
-    "automatic-radius": "Raio automático",
-    up: "Topo",
-    right: "Dereita",
-    down: "Abaixo",
-    left: "Esquerda",
-    "stroke-color": "Cor do traço",
-    "fill-color": "Cor de preenchimento",
-    "text-color": "Cor do texto",
-    "children-count": "%{smart_count} criança |||| %{smart_count} crianças",
-    "no-objects": "Este mapa não tem objetos",
-    "no-duplicate-objects": "Nenhum objeto duplicado",
-    "all-objects-labeled": "Todos os objetos rotulados",
-    "all-objects-categorized": "Todos os objetos estão categorizados",
-    "sections-scaling": "Dimensionamento das seções",
-    "edit-contents": "Editar conteúdos",
-    capacity: "Capacidade",
-    places: "lugar |||| lugares",
-    "no-capacity": "Sem capacidade",
-    entrance: "Entrada",
-    category: "Categoria",
-    categories: "Categorias",
-    "n-categories": "categoria |||| categorias",
-    "categories-info-description-1": "As categorias podem ter atribuição de preço quando o mapa é renderizado para um evento específico, definindo, assim, os preços referentes a objetos atribuídos a cada categoria.",
-    "multiple-object-types-per-category": "categorias em vários tipos de objeto",
-    "unique-object-types-per-category": "Uma categoria por tipo de objeto",
-    "object-types-per-category": "Tipos de objeto por categoria",
-    "object-types-per-category-invalid": "Algumas categorias foram aplicadas a mais de um tipo de objeto.",
-    "object-types-per-category-valid": "Cada categoria foi aplicada a um único tipo de objeto.",
-    unused: "Não utilizado",
-    "chart-no-categories": "Este mapa não tem categorias",
-    scale: "Escala",
-    opacity: "Opacidade",
-    order: "Ordenação",
-    background: "Fundo",
-    foreground: "Primeiro plano",
-    "row-spacing": "Espaçamento entre filas",
-    "seat-spacing": "Espaçamento do assento",
-    "seat-count": "Número de assentos",
-    "visible-to-ticket-buyers": "Visível para compradores de ingressos",
-    "make-visible-to-ticket-buyers": "Tornar visível para compradores de ingressos",
-    "make-visible-to-ticket-buyers-hint": "Não será possível desfazer esta ação. Para usar uma imagem de fundo a fim de desenhar sobre ela, use o mapa de Referência em vez disso.",
-    "background-file-too-big": "O arquivo é grande demais e poderá afetar o tempo de carregamento",
-    "from-images": "de imagens",
-    "chart-images-description": "Este gráfico tem %{count} imagens, com um tamanho total de download de %{filesize} KB.",
-    "chart-images-tip": "Mantenha o número total de imagens baixas e o tamanho total de download abaixo de %{filesize} KB para garantir tempos de carregamento curtos.",
-    "chart-no-images": "Este gráfico não tem imagens.",
-    caption: "Título",
-    "displayed-label": "Rótulo exibido",
-    "rowlabel-enabled": "Activado",
-    "displayed-label-tooltip": "Você pode alterar o rótulo exibido que fica visível para os usuários. Internamente, as retenções e reservas ainda serão feitas com a Etiqueta original.",
-    visible: "Visível",
-    "font-size": "Tamanho da fonte",
-    rotation: "Rotação",
-    "position-x": "Posição X",
-    "position-y": "Posição Y",
-    style: "Estilo",
-    bold: "Negrito",
-    italic: "Itálico",
-    "object-has-no-properties": "Este objeto não tem propriedades",
-    "objects-have-no-properties-in-common": "Estes objetos não têm propriedades em comum para editar.",
-    clear: "Apagar",
-    prefix: "Prefixo",
-    "start-at": "Iniciar em",
-    "end-at": "Termine em",
-    invert: "Inverter",
-    chairs: "Cadeiras",
-    "open-spaces": "Espaços livres",
-    spaces: "Espaços",
-    radius: "Raio",
-    curve: "Curva",
-    descending: "Descendente",
-    ascending: "Ascendente",
-    ga: "Admissão Geral",
-    shape: "Forma",
-    "corner-radius": "Raio do canto",
-    "stroke-width": "Largura do traço",
-    width: "Largura",
-    height: "Altura",
-    done: "Concluído",
-    back: "Voltar",
-    "chart-capacity": "Capacidade do mapa",
-    "container-no-capacity": "Este %{container} não tem lugares.",
-    "chart-booths-description": "Este mapa tem %{count} %{booths}.",
-    "chart-no-booths": "Este mapa não tem booths.",
-    "container-is-empty": "Este %{container} está vazio",
-    "create-new-category": "Criar nova categoria",
-    "capacity-by-type": "Capacidade por %{type}",
-    uncategorized: "Sem categoria",
-    "object-label": "Rótulo de %{object}",
-    "object-labeling": "Rotulagem de %{object}",
-    "tool-tool": "Ferramenta %{tool}",
-    "chart-chart": "Mapa %{chart}",
-    "section-section": "Seção %{section}",
-    "unlabeled-object": "%{object} sem rótulo",
-    "find-the-right-scale": "Ache a escala certa",
-    "find-the-right-scale-description": "Mova, gire e dimensione para corresponder o espaçamento entre os assentos de uma fila no mapa de referência com a fila sobreposta.",
-    "correct-spacing": "Espaçamento correto",
-    "incorrect-spacing": "Espaçamento incorreto",
-    "reference-chart": "Mapa de referência",
-    "reference-chart-hint": "Use a imagem de uma planta existente para desenhar sobre ela.",
-    "chart-background-hint": "Use uma imagem como fundo para fins estéticos, visível para os compradores de ingressos.",
-    "adjust-row-spacing": "Ajuste o espaçamento entre filas",
-    "adjust-row-spacing-description": "Corresponda o espaçamento entre filas movendo, girando e ajustando o espaçamento.",
-    "trace-chart": "Trace por cima de outro mapa",
-    "reference-chart-intro-title": "Calibração do mapa de referência",
-    "reference-chart-intro-description": "Este assistente o ajudará a encontrar a escala correta para a imagem carregada, redimensionando e posicionando assentos falsos no topo da imagem de fundo.",
-    "reference-chart-description-1": "Carregue uma imagem de um mapa existente para desenhar sobre ele.",
-    "reference-chart-description-2": "Poupe tempo e minimize erros quando estiver desenhando.",
-    "find-seats": "Encontre uma linha longa e aplique zoom para preencher a tela.",
-    "find-seats-description": "Clique e arraste para reposicionar a planta dos assentos. Aumente o zoom usando os controles na parte inferior.",
-    "click-on-seats": "Coloque os assentos em cima dos assentos do fundo.",
-    "click-on-seats-description": "Clique para colocar os assentos. Clique e arraste para reposicioná-los. Clique com o botão direito para removê-los.",
-    "adjust-seat-size": "Proceda para combinar o tamanho dos assentos.",
-    "adjust-seat-size-description": "Ajuste o tamanho do assento até que as bordas dos assentos colocados e os assentos do fundo se sobreponham.",
-    "seat-size-autoadjusted": "O tamanho do assento foi ajustado automaticamente.",
-    "seat-size-autoadjusted-description": "Este é o tamanho recomendado para a melhor legibilidade do gráfico.",
-    "confirm-seat-size": "Confirme o tamanho do assento.",
-    "confirm-seat-size-description": "Se o tamanho sugerido não se adequar ao seu layout, você pode ajustá-lo manualmente.",
-    "row-spacing-step": "Defina o espaçamento das linhas arrastando a linha destacada para a próxima linha paralela.",
-    "row-spacing-step-description": "Clique e arraste a linha para reposicioná-la. Para confirmar, clique em Concluído.",
-    "reference-chart-complete-1": "Plano de referência calibrado.",
-    "reference-chart-complete-2": "Agora você pode começar a rastrear seu plano de referência.",
-    "no-row-shape-detected": "Isso não parece uma linha. O tamanho do assento não será ajustado automaticamente.",
-    "seat-size": "Tamanho do assento",
-    "zoom-level": "Nível de zoom",
-    "image-load-error": "A imagem não pôde ser carregada",
-    "image-tool-info": "Faça o upload de uma imagem para inserir na planta baixa.",
-    "close-designer-with-errors-question": "Fechar a planta com erros?",
-    "close-designer-with-errors-description": "Este gráfico é salvo com erros. Tem certeza de que deseja sair sem corrigi-los?",
-    "automatic-stroke": "Curso automático",
-    type: "Tipo",
-    variation: "Variação",
-    stage: "Cena",
-    stairs: "Escadas",
-    restrooms: "Banheiros",
-    "restrooms-unisex": "Banheiros",
-    "restrooms-men": "Banheiros Masculinos",
-    "restrooms-women": "Banheiros de Mulheres",
-    unisex: "Unissex",
-    men: "Homens",
-    women: "Mulheres",
-    emergencyExit: "Saída de emergência",
-    foodCourt: "Praça de alimentação",
-    bar: "Bar",
-    cocktail: "Coquetel",
-    beer: "Cerveja",
-    cafe: "Café",
-    misc: "Miscelânea",
-    "bookable-as-a-whole": "Pode ser reservado como um todo",
-    "bookable-as-a-whole-table-tooltip": "Quando ativado, os usuários selecionam toda a mesa com um clique. A mesa fica reservada, não os lugares.\n",
-    "min-occupancy": "Ocupação mínima",
-    "max-occupancy": "Ocupação máxima",
-    type_generalAdmission: "Admissão Geral",
-    type_fixedOccupancy: "Ocupação fixa",
-    "fixedOccupancy-info": "Apenas um usuário pode selecionar todos os lugares com um único clique.",
-    type_variableOccupancy: "Ocupação variável",
-    "variableOccupancy-info": "Apenas um usuário pode selecionar vários locais, dentro dos limites.",
-    "general-admission-area-info": "Vários usuários podem selecionar lugares em uma área de admissão geral.",
-    "restricted-view": "Visão restrita",
-    "label-position-invisible": "Invisível",
-    "label-position-left": "Esquerda",
-    "label-position-right": "Direita",
-    "label-position-left-and-right": "Esquarda e direita",
-    "label-skip": "Pular %{letter}",
-    "objects-out-of-section-bounds": "Alguns objetos estão fora dos limites da seção.",
-    "paste-failed-single": "Este conteúdo (%{unsupportedObjectType}) não pode ser colado %{where}.",
-    "paste-failed": "Este conteúdo (%{unsupportedObjectTypes}) não pode ser colado %{where}.",
-    insideSection: "dentro de uma seção",
-    outsideSection: "fora de uma seção",
-    onChartWithoutSections: "em tabelas sem seções",
-    copy: "Copiar",
-    paste: "Colar",
-    "no-focal-point-set": "Sem ponto focal",
-    "focal-point-set": "Ponto focal está definido",
-    displayObjectType: "Tipo exibido",
-    couch: "Sofá",
-    accessible: "Acessível",
-    "companion-seat": "Assento acompanhante",
-    "disabled-by-social-distancing-rules": "Indisponível por regras de distanciamento social",
-    "accessible-disabled-because-disabled-category": "Esta opção está desativada, porque sua seleção contém objetos que pertencem a uma categoria acessível",
-    "companion-seat-disabled-because-disabled-category": "Esta opção está desativada, porque sua seleção contém objetos que pertencem a uma categoria acessível",
-    "horizontal-orientation": "Orientação horizontal",
-    "label-position-bottom": "Fundo",
-    "label-position-top": "Topo",
-    renderingFailed: "The seating chart designer could not be loaded.",
-    "label-editing-warning-title": "Editar esse rótulo?",
-    "label-editing-warning": "As reservas podem desaparecer, e os canais podem ter sua atribuição cancelada.",
-    "edit-anyway": "Edite mesmo assim",
-    "ga-bookable-as-a-whole-warning-title": "Livro como um todo?",
-    "ga-bookable-as-a-whole-warning": "If the GA area has 1 or more bookings, ticket buyers won't be able to select it anymore.",
-    "ga-bookable-as-a-whole-warning-confirm": "Livro como um todo",
-    "more-info": "Mais informações",
-    icon: "Icone",
-    "bar-cocktail": "Coquetel",
-    "bar-beer": "Cerveja",
-    size: "Tamanho",
-    valid: "Válido",
-    warning: "Atençao",
-    error: "Erro",
-    notice: "Aviso",
-    "floor-x": "Andar %{number}",
-    "new-floor": "Novo andar",
-    floor: "Andar",
-    "create-new-floor": "Crie novo andar",
-    "new-floor-dialog-multifloor-description": "Os compradores de ingressos terão uma visão de vários andares e controles para navegar pelos andares.",
-    "new-floor-dialog-floor-spread-notice": "Os pisos se espalharão automaticamente se seus objetos forem visualmente obstruídos por pisos acima deles.",
-    create: "Crio",
-    "delete-floor": "Apagar o chão",
-    "unused-floors": "Existem pisos não utilizados",
-    "no-unused-floors": "Todos os pisos têm conteúdo",
-    "category-key-already-exists": "A chave de categoria %{key} já existe.",
-    "category-edit-warning-title": "Editar chave de categoria",
-    "category-edit-warning-description": "As alterações da chave de categoria devem ser refletidas na configuração de preços. Caso contrário, alguns objetos se tornarão impossíveis de reserva ou terão um preço incorreto atribuído.",
-    "play-tutorial": "Reproduzir tutorial",
-    "keyboard-shortcuts": "Atalhos do teclado",
-    actions: "Ações",
-    cut: "Cortar",
-    deselect: "Desmarcar",
-    "toggle-reference-chart": "Mostrar mapa de referência",
-    "go-to-floor": "Vá para o chão...",
-    recalibrate: "Recalibrar",
-    "max-capacity-exceeded": "Capacidade maior que %{maxCapacity}",
-    "saving-failed-validation-error": "O salvamento falhou devido a um erro de validação",
-    "save-failed-validation-error": "Ocorreu um erro durante o salvamento automático porque seu gráfico contém erros de validação",
-    multifloor: "Vários andares",
-    "multifloor-view": "Perspectiva de vários andares",
-    "stage-view": "Vista de baixo",
-    "stage-view-description": "Melhor para teatros que têm o palco desenhado na parte inferior.",
-    "isometric-view": "Vista de cima",
-    "isometric-view-description": "Visão menos obstruída para teatros, estádios ou outros locais desenhados de qualquer lado.",
-    keys: "Chaves",
-    manage: "Gerir",
-    "no-category": "Nenhuma categoria atribuída",
-    "categories-have-moved": "As categorias mudaram",
-    "categories-have-moved-li-1": "Volte ao topo.",
-    "categories-have-moved-li-2": "Clique no ícone [icon] próximo a Categorias.",
-    "block-style": "Estilo de bloco",
-    "published-labels-disabled": "As etiquetas publicadas não podem ser editadas. Você ainda pode editar o Rótulo Exibido.",
-    "deleting-published-objects-disabled": "Objetos publicados não podem ser excluídos.",
-    set: "Establecer",
-    rainbow: "Arco-íris",
-    "polar-sunset": "Pôr do sol polar",
-    "frosty-autumn": "Outono gelado",
-    "vibrant-nature": "Natureza vibrante",
-    scenery: "Paisagem",
-    whiteboard: "Quadro branco",
-    blackboard: "Quadro negro",
-    platinum: "Platina",
-    ivory: "Marfim",
-    "toggle-color-scheme": "Alternar esquema de cores",
-    "show-above": "Mostrar acima"
-};
+mercator.Language.pt = ptLanguage;
 mercator.Messages = function (t) {
     this.polyglot = new Polyglot({
         phrases: mercator.Language[t],
@@ -3047,7 +2603,40 @@ mercator.Features = function (e) {
     return Object.values(mercator.Features.Type).map(e => {
         if (this.isDisabled(e) || this.isReadOnly(e)) return e
     })
-}, mercator.Features.Type = {}, mercator.Features.Type.CHART_NAME = "chartName", mercator.Features.Type.FOCAL_POINT = "focalPoint", mercator.Features.Type.BACKGROUND_IMAGE = "backgroundImage", mercator.Features.Type.REFERENCE_CHART = "referenceChart", mercator.Features.Type.SECTIONS = "sections", mercator.Features.Type.ROWS = "rows", mercator.Features.Type.TABLES = "tables", mercator.Features.Type.BOOTHS = "booths", mercator.Features.Type.TEXTS = "texts", mercator.Features.Type.IMAGES = "images", mercator.Features.Type.SHAPES = "shapes", mercator.Features.Type.AREAS = "areas", mercator.Features.Type.CATEGORY_LIST = "categoryList", mercator.Features.Type.VIEW_FROM_YOUR_SEAT = "viewFromYourSeat", mercator.Features.Type.FIRST_TIME_TUTORIAL = "firstTimeTutorial", mercator.Features.Type.LABELING = "labeling", mercator.Features.Type.NODES = "nodes", mercator.Features.Type.OBJECT_PROPERTIES = "objectProperties", mercator.Features.Type.CONTEXT_ACTIONS = "contextActions", mercator.Features.Type.PUBLISHED_SECTION_LABEL = "publishedSectionLabel", mercator.Features.Type.OBJECT_SECTION_LABELS = "objectSectionLabels", mercator.Features.Type.MULTIPLE_FLOORS = "multipleFloors", mercator.Features.Type.PUBLISHING = "publishing", mercator.Features.Type.ICONS = "icons", mercator.Features.Type.HAND = "hand", mercator.Features.Type.SELECT_SEATS = "selectSeats", mercator.Features.Type.TABLES_BOOK_AS_A_WHOLE = "tables.bookAsAWhole", mercator.Features.Status = {}, mercator.Features.Status.ENABLED = "enabled", mercator.Features.Status.READ_ONLY = "read-only", mercator.Features.Status.HIDDEN = "hidden", mercator.Features.Status.UNHIDDEN = "unhidden", mercator.Features.Status.DISABLED = "disabled";
+}, mercator.Features.Type = {},
+    mercator.Features.Type.CHART_NAME = "chartName",
+    mercator.Features.Type.FOCAL_POINT = "focalPoint",
+    mercator.Features.Type.BACKGROUND_IMAGE = "backgroundImage",
+    mercator.Features.Type.REFERENCE_CHART = "referenceChart",
+    mercator.Features.Type.SECTIONS = "sections",
+    mercator.Features.Type.ROWS = "rows",
+    mercator.Features.Type.TABLES = "tables",
+    mercator.Features.Type.BOOTHS = "booths",
+    mercator.Features.Type.TEXTS = "texts",
+    mercator.Features.Type.IMAGES = "images",
+    mercator.Features.Type.SHAPES = "shapes",
+    mercator.Features.Type.AREAS = "areas",
+    mercator.Features.Type.CATEGORY_LIST = "categoryList",
+    mercator.Features.Type.VIEW_FROM_YOUR_SEAT = "viewFromYourSeat",
+    // mercator.Features.Type.FIRST_TIME_TUTORIAL = "firstTimeTutorial",
+    mercator.Features.Type.LABELING = "labeling",
+    mercator.Features.Type.NODES = "nodes",
+    mercator.Features.Type.OBJECT_PROPERTIES = "objectProperties",
+    mercator.Features.Type.CONTEXT_ACTIONS = "contextActions",
+    mercator.Features.Type.PUBLISHED_SECTION_LABEL = "publishedSectionLabel",
+    mercator.Features.Type.OBJECT_SECTION_LABELS = "objectSectionLabels",
+    mercator.Features.Type.MULTIPLE_FLOORS = "multipleFloors",
+    mercator.Features.Type.PUBLISHING = "publishing",
+    mercator.Features.Type.ICONS = "icons",
+    mercator.Features.Type.HAND = "hand",
+    mercator.Features.Type.SELECT_SEATS = "selectSeats",
+    mercator.Features.Type.TABLES_BOOK_AS_A_WHOLE = "tables.bookAsAWhole",
+    mercator.Features.Status = {},
+    mercator.Features.Status.ENABLED = "enabled",
+    mercator.Features.Status.READ_ONLY = "read-only",
+    mercator.Features.Status.HIDDEN = "hidden",
+    mercator.Features.Status.UNHIDDEN = "unhidden",
+    mercator.Features.Status.DISABLED = "disabled";
 mercator.FeatureConfig = function (i) {
     this.config = i
 }, mercator.FeatureConfig.prototype.getFeatureStatus = function (i) {
@@ -3120,7 +2709,8 @@ mercator.ConfigParser = function () { }, mercator.ConfigParser.defaults = {
     READ_ONLY: "readOnly",
     NORMAL: "normal",
     SAFE: "safe"
-}, mercator.ConfigParser.supportedModes = [mercator.ConfigParser.Modes.READ_ONLY, mercator.ConfigParser.Modes.NORMAL, mercator.ConfigParser.Modes.SAFE], mercator.ConfigParser.supportedCanvasColors = ["auto", "light", "dark"];
+}, 
+mercator.ConfigParser.supportedModes = [mercator.ConfigParser.Modes.READ_ONLY, mercator.ConfigParser.Modes.NORMAL, mercator.ConfigParser.Modes.SAFE], mercator.ConfigParser.supportedCanvasColors = ["auto", "light", "dark"];
 mercator.Object = function () {
     this.selector = null, this.mover = null, this.labeler = null, this.designer = null, this.uuid = null, this.isBlurred = !1, this.isHighlighted = !1, this.isPressed = !1, this.inLabelingMode = !1
 }, mercator.Object.prototype.init = function (t, e, i, s = !1) {
@@ -3408,7 +2998,7 @@ mercator.Chair = function (e, t, i, s = !1) {
         fill: this.determineLabelColor()
     }).toLayer("objectsLayer", this.designer, this.zIndex).applyZoom(this.designer), this.iconLabel.node.setAttribute("pointer-events", "none")
 }, mercator.Chair.prototype.drawShape = function () {
-    this.circle = this.designer.drawer.circle(this.center().x, this.center().y, mercator.Chair.drawRadius(), this.determineStyle()).toLayer("objectsLayer", this.designer, this.zIndex).applyZoom(this.designer), this.circle.seatsioObjectType = "chair"
+    this.circle = this.designer.drawer.circle(this.center().x, this.center().y, mercator.Chair.drawRadius(), this.determineStyle()).toLayer("objectsLayer", this.designer, this.zIndex).applyZoom(this.designer), this.circle.mercatorObjectType = "chair"
 }, mercator.Chair.prototype.clone = function (e) {
     var t = new mercator.Chair(this.centerPoint, e, e.subChart);
     return t.label = this.label, t.category = this.category, t.accessible = this.accessible, t.companionSeat = this.companionSeat, t.restrictedView = this.restrictedView, t.displayObjectType = this.displayObjectType, t.disabledBySocialDistancingRules = this.disabledBySocialDistancingRules, t
@@ -3579,7 +3169,7 @@ mercator.Chair = function (e, t, i, s = !1) {
         stroke: i,
         "stroke-width": 2
     }).toLayer("objectsLayer", t).applyZoom(t);
-    return s.seatsioObjectType = "chair", s
+    return s.mercatorObjectType = "chair", s
 }, mercator.Chair.width = 16, mercator.Chair.strokeWidth = 1, mercator.Chair.drawStrokeWidth = 1.6, mercator.Chair.widthPlusStroke = mercator.Chair.width + 2 * mercator.Chair.strokeWidth, mercator.Chair.drawRadius = (() => mercator.Chair.width / 2 - 1), mercator.Chair.radius = (() => mercator.Chair.width / 2), mercator.Chair.defaultColor = {
     light: "#fafafa",
     dark: "#bbb"
@@ -6521,7 +6111,7 @@ const KEYS = {
 },
     TOOLS_HOTKEYS = {
         // v: {
-        //     toolName: "hand-o-up",
+        //     toolName: "mouse-pointer",
         //     uiEvent: "toolSelectCursor"
         // },
         // c: {
@@ -7019,40 +6609,43 @@ mercator.ReferenceChart = class extends mercator.BackgroundImage {
         var a = new mercator.ReferenceChart(r);
         return e && (e.backgroundImageUrl || e.backgroundImageKey) && this.setFromJson(a, e, r), a
     }
-}, mercator.ReferenceChart.OPACITY = .8, mercator.ReferenceChart.MAX_UPLOAD_FILESIZE_MB = 15;
+}, mercator.ReferenceChart.OPACITY = .8,
+    mercator.ReferenceChart.MAX_UPLOAD_FILESIZE_MB = 15;
 mercator.Saver = function (e) {
     this.chartDesigner = e, this.deflater = this.createDeflater(), this.deferred = null
-}, mercator.Saver.prototype.createDeflater = function () {
-    var e = this,
-        t = new Worker("deflater/deflater.js");
-    return t.onmessage = function (t) {
-        e.chartDesigner.v2Client.saveChart(e.chartDesigner.chartKey, t.data).then(e.saveSuccess.bind(e), t => e.saveError(function (e) {
-            let t = e.responseJSON;
-            if (t) {
-                let e = t.errors;
-                if (e && e.length > 0 && "DRAWING_VALIDATION_FAILED" === e[0].code) return "SAVE_FAILED_VALIDATION_ERROR"
-            }
-            return "SAVE_FAILED_UNKNOWN_ERROR"
-        }(t)))
-    }, t.onerror = function (t) {
-        e.saveError(t.message)
-    }, t
-}, mercator.Saver.prototype.save = function (e) {
-    if (!this.chartDesigner.isReadOnly()) return this.showSavingFeedback(), this.deferred = $.Deferred(), this.deflater.postMessage(e), this.deferred;
-    this.chartDesigner.uiEvents.saveRejected()
-}, mercator.Saver.prototype.saveSuccess = function (e, t, s) {
-    201 === s.status ? this.chartDesigner.onChartCreated(this.chartDesigner.chartKey) : this.chartDesigner.onChartUpdated();
-    var r = s.responseJSON;
-    this.chartDesigner.setStatus(r.status), this.showSaveSuccessfulFeedback(), this.deferred.resolve()
-}, mercator.Saver.prototype.saveError = function (e) {
-    // this.showSaveFailedFeedback(e), "SAVE_FAILED_VALIDATION_ERROR" === e ? this.deferred.resolve() : this.deferred.reject()
-}, mercator.Saver.prototype.showSavingFeedback = function () {
-    this.chartDesigner.uiEvents.savingStart()
-}, mercator.Saver.prototype.showSaveSuccessfulFeedback = function () {
-    this.chartDesigner.uiEvents.saveSuccess(moment())
-}, mercator.Saver.prototype.showSaveFailedFeedback = function (e) {
-    this.chartDesigner.uiEvents.saveRejected(e)
-};
+},
+    mercator.Saver.prototype.createDeflater = function () {
+        var e = this,
+            t = new Worker("deflater/deflater.js");
+        return t.onmessage = function (t) {
+            e.chartDesigner.v2Client.saveChart(e.chartDesigner.chartKey, t.data).then(e.saveSuccess.bind(e), t => e.saveError(function (e) {
+                let t = e.responseJSON;
+                if (t) {
+                    let e = t.errors;
+                    if (e && e.length > 0 && "DRAWING_VALIDATION_FAILED" === e[0].code) return "SAVE_FAILED_VALIDATION_ERROR"
+                }
+                return "SAVE_FAILED_UNKNOWN_ERROR"
+            }(t)))
+        }, t.onerror = function (t) {
+            e.saveError(t.message)
+        }, t
+    },
+    mercator.Saver.prototype.save = function (e) {
+        if (!this.chartDesigner.isReadOnly()) return this.showSavingFeedback(), this.deferred = $.Deferred(), this.deflater.postMessage(e), this.deferred;
+        this.chartDesigner.uiEvents.saveRejected()
+    }, mercator.Saver.prototype.saveSuccess = function (e, t, s) {
+        201 === s.status ? this.chartDesigner.onChartCreated(this.chartDesigner.chartKey) : this.chartDesigner.onChartUpdated();
+        var r = s.responseJSON;
+        this.chartDesigner.setStatus(r.status), this.showSaveSuccessfulFeedback(), this.deferred.resolve()
+    }, mercator.Saver.prototype.saveError = function (e) {
+        // this.showSaveFailedFeedback(e), "SAVE_FAILED_VALIDATION_ERROR" === e ? this.deferred.resolve() : this.deferred.reject()
+    }, mercator.Saver.prototype.showSavingFeedback = function () {
+        this.chartDesigner.uiEvents.savingStart()
+    }, mercator.Saver.prototype.showSaveSuccessfulFeedback = function () {
+        this.chartDesigner.uiEvents.saveSuccess(moment())
+    }, mercator.Saver.prototype.showSaveFailedFeedback = function (e) {
+        this.chartDesigner.uiEvents.saveRejected(e)
+    };
 mercator.ObjectSelector = function (e, t) {
     this.object = e, this.designer = t, this.selectionRectangle = null, this.selected = !1
 }, mercator.ObjectSelector.prototype.objectUndrawn = function () {
@@ -7877,7 +7470,7 @@ mercator.EditableValue = function (e, t, i, a) {
     var t = e.screenX - this.moveStartX,
         i = Math.round(t / PIXELS_FOR_UNIT_STEP),
         a = this.moveStartValue + i;
-    Math.abs(i) > 0 && (this.isScrubbing = !0), this.min && a <= this.min ? (a = this.min, $("#chartDesignerWrapper").addClass("scrubbing-minReached")) : $("#chartDesignerWrapper").removeClass("scrubbing-minReached"), this.max && a >= this.max ? (a = this.max, $("#chartDesignerWrapper").addClass("scrubbing-maxReached")) : $("#chartDesignerWrapper").removeClass("scrubbing-maxReached"), this.updateValue(a)
+    Math.abs(i) > 0 && (this.isScrubbing = !0), this.min && a <= this.min ? (a = this.min, $("#frameIdMercator").addClass("scrubbing-minReached")) : $("#frameIdMercator").removeClass("scrubbing-minReached"), this.max && a >= this.max ? (a = this.max, $("#frameIdMercator").addClass("scrubbing-maxReached")) : $("#frameIdMercator").removeClass("scrubbing-maxReached"), this.updateValue(a)
 }, mercator.EditableValue.prototype.activateTextInput = function () {
     this.isTextInputActive = !0, this.refreshMode(), this.element().children(".valueInput").focus().select()
 }, mercator.EditableValue.prototype.deactivateTextInput = function () {
@@ -7890,11 +7483,11 @@ mercator.EditableValue = function (e, t, i, a) {
             $(window).off("mousemove", e.onMouseMove.bind(e))
         };
     e.element().on("mousedown", function (t) {
-        e.isTextInputActive || (e.moveStartValue = e.value, e.moveStartX = t.screenX, e.isScrubbing = !1, $("#chartDesignerWrapper").addClass("scrubbingActive"), $(window).on("mousemove", e.onMouseMove.bind(e)))
+        e.isTextInputActive || (e.moveStartValue = e.value, e.moveStartX = t.screenX, e.isScrubbing = !1, $("#frameIdMercator").addClass("scrubbingActive"), $(window).on("mousemove", e.onMouseMove.bind(e)))
     }).on("mouseup", function (t) {
         e.isScrubbing || e.isTextInputActive || e.activateTextInput()
     }), $(window).on("mouseup", function (e) {
-        $("#chartDesignerWrapper").removeClass("scrubbingActive", "scrubbing-minReached", "scrubbing-maxReached"), $(window).off("mousemove"), $(window).off("mouseup", t)
+        $("#frameIdMercator").removeClass("scrubbingActive", "scrubbing-minReached", "scrubbing-maxReached"), $(window).off("mousemove"), $(window).off("mouseup", t)
     }), e.element().children(".valueInput").on("blur", function (t) {
         e.deactivateTextInput()
     }).on("keydown", function (t) {
@@ -9015,97 +8608,99 @@ mercator.Booth = function (t, e, o, i, s = !1) {
 };
 mercator.Icon = function (t, o, e, i, n = !1) {
     this.subChart = i, this.designer = i.designer, this.center = t, this.size = o || mercator.Icon.defaultIconSize, this.icon = null, this.rotationAngle = 0, this.opacity = 100, this.iconContent = e || mercator.Icon.defaultIcon, this.fillColor = mercator.ColorPalettes.defaults.ICON_FILL[this.designer.getCanvasColorScheme()], this.init(this.designer, !0, void 0, n)
-}, mercator.Icon.prototype = new mercator.Object, mercator.Icon.prototype.type = "icon", mercator.Icon.CHOICES = ["restrooms-unisex", "restrooms-men", "restrooms-women", "stage", "entrance", "emergencyExit", "stairs", "foodCourt", "bar-cocktail", "bar-beer", "cafe", "warning"], mercator.Icon.defaultIconSize = 50, mercator.Icon.defaultIcon = "restrooms-unisex", mercator.Icon.prototype.getObjectTypeName = function () {
-    return "icon"
-}, mercator.Icon.prototype.getInspectorSheets = function () {
-    return Object.assign(mercator.Object.prototype.getInspectorSheets.call(this), {
-        "Icon.size": this.size,
-        "Icon.icon": this.iconContent,
-        "Icon.fillColor": this.fillColor,
-        "Shape.rotation": Math.round(this.rotationAngle),
-        "Shape.opacity": this.opacity
-    })
-}, mercator.Icon.prototype.toJson = function () {
-    return {
-        center: this.center.toJson(this.subChart),
-        size: this.size,
-        rotationAngle: this.rotationAngle,
-        objectType: "icon",
-        uuid: this.uuid,
-        content: this.iconContent,
-        opacity: this.opacity,
-        fillColor: this.fillColor
-    }
-}, mercator.Icon.fromJson = function (t, o) {
-    const e = new mercator.Icon(mercator.Point.fromJson(t.center, o), t.size, t.content, o);
-    return e.rotationAngle = t.rotationAngle, e.uuid = t.uuid, e.opacity = t.opacity, e.fillColor = t.fillColor, e
-}, mercator.Icon.prototype.getPositionGuides = mercator.PositionGuidesSupport.prototype.getPositionGuidesForRect, mercator.Icon.createDummyIconForMousePointer = function (t, o, e, i) {
-    return new mercator.Icon(t, o, e, i, !0)
-}, mercator.Icon.createIcon = function (t, o, e, i) {
-    return new mercator.Icon(t, o, e, i)
-}, mercator.Icon.prototype.draw = function () {
-    if (this.subChart.isActive()) return this.icon = this.createShape(this.center, this.size, this.fillColor, this.rotationAngle, seatsUnicode(this.iconContent)), this.applyElementAttributes(), this.objectDrawn(), this
-}, mercator.Icon.prototype.createShape = function (t, o, e, i, n) {
-    return this.designer.drawer.text(t.x, t.y, n, {
-        "font-size": o,
-        "font-family": "seatsdesigner"
-    }).toLayer("objectsLayer", this.designer, this.zIndex).zoomAndRotateAround(i, this.getCenter(), this.designer).applyZoom(this.designer)
-}, mercator.Icon.prototype.bbox = function () {
-    return new mercator.RectangleShape(this.center, this.size, this.size, this.rotationAngle).bbox()
-}, mercator.Icon.prototype.visibleElementsSet = function () {
-    return mercator.set(this.icon, this.positionGuides)
-}, mercator.Icon.prototype.moved = function (t) {
-    this.center = this.center.add(t), this.refreshOutOfBounds(), this.redraw()
-}, mercator.Icon.prototype.redraw = function () {
-    this.drawn() && (this.undraw(), this.draw())
-}, mercator.Icon.prototype.drawn = function () {
-    return this.icon
-}, mercator.Icon.prototype.undraw = function () {
-    this.subChart.isActive() && (this.objectUndrawn(), this.selector.undraw(), this.icon && (this.icon.remove(), this.icon = null))
-}, mercator.Icon.prototype.determineStrokeWidth = function () {
-    return 0
-}, mercator.Icon.prototype.determineDefaultColor = function () {
-    return this.fillColor
-}, mercator.Icon.prototype.rotated = function (t, o) {
-    this.center = this.center.rotateAround(t, o), this.rotationAngle = wrapRotationAround(this.rotationAngle + o), this.redraw()
-}, mercator.Icon.prototype.flip = function (t) {
-    return this.center = t.mirror(this.getCenter()), this.rotationAngle = wrapRotationAround(t.mirrorAngle(this.rotationAngle)), this.redraw(), this
-}, mercator.Icon.prototype.setSize = function (t) {
-    this.size = t, this.redraw()
-}, mercator.Icon.prototype.setIcon = function (t) {
-    this.iconContent = t, this.redraw()
-}, mercator.Icon.prototype.setOpacity = function (t) {
-    this.opacity = t, this.applyElementAttributes()
-}, mercator.Icon.prototype.setRotationAngle = function (t) {
-    this.rotationAngle = wrapRotationAround(t), this.redraw()
-}, mercator.Icon.prototype.getCenter = function () {
-    return this.center
-}, mercator.Icon.prototype.getRotation = function () {
-    return 0
-}, mercator.Icon.prototype.remove = function () {
-    this.subChart.icons.remove(this)
-}, mercator.Icon.prototype.svgElement = function () {
-    return this.icon
-}, mercator.Icon.prototype.duplicate = function (t) {
-    return this.subChart.icons.add(this.clone(t))
-}, mercator.Icon.prototype.clone = function (t) {
-    const o = new mercator.Icon(this.center, this.size, this.iconContent, t);
-    return o.rotationAngle = this.rotationAngle, o.opacity = this.opacity, o.fillColor = this.fillColor, o
-}, mercator.Icon.prototype.applyElementAttributes = function () {
-    this.icon && this.icon.attr({
-        fill: this.determineBaseColor(),
-        "stroke-width": 1,
-        opacity: this.determineOpacity()
-    })
-}, mercator.Icon.prototype.determineOpacity = function () {
-    return this.opacity / 100
-}, mercator.Icon.prototype.setSmartType = function (t) {
-    this.iconContent = t, this.redraw()
-}, mercator.Icon.prototype.setFillColor = function (t) {
-    let o = new mercator.Color(this.fillColor),
-        e = new mercator.Color(t);
-    return this.fillColor = t, o.isDark() !== e.isDark() ? this.redraw() : this.applyElementAttributes(), this
-};
+}, mercator.Icon.prototype = new mercator.Object, mercator.Icon.prototype.type = "icon",
+    mercator.Icon.CHOICES = icons_fa,
+    mercator.Icon.defaultIconSize = 50, mercator.Icon.defaultIcon = "child", mercator.Icon.prototype.getObjectTypeName = function () {
+        return "icon"
+    }, mercator.Icon.prototype.getInspectorSheets = function () {
+        return Object.assign(mercator.Object.prototype.getInspectorSheets.call(this), {
+            "Icon.size": this.size,
+            "Icon.icon": this.iconContent,
+            "Icon.fillColor": this.fillColor,
+            "Shape.rotation": Math.round(this.rotationAngle),
+            "Shape.opacity": this.opacity
+        })
+    }, mercator.Icon.prototype.toJson = function () {
+        return {
+            center: this.center.toJson(this.subChart),
+            size: this.size,
+            rotationAngle: this.rotationAngle,
+            objectType: "icon",
+            uuid: this.uuid,
+            content: this.iconContent,
+            opacity: this.opacity,
+            fillColor: this.fillColor
+        }
+    }, mercator.Icon.fromJson = function (t, o) {
+        const e = new mercator.Icon(mercator.Point.fromJson(t.center, o), t.size, t.content, o);
+        return e.rotationAngle = t.rotationAngle, e.uuid = t.uuid, e.opacity = t.opacity, e.fillColor = t.fillColor, e
+    }, mercator.Icon.prototype.getPositionGuides = mercator.PositionGuidesSupport.prototype.getPositionGuidesForRect, mercator.Icon.createDummyIconForMousePointer = function (t, o, e, i) {
+        return new mercator.Icon(t, o, e, i, !0)
+    }, mercator.Icon.createIcon = function (t, o, e, i) {
+        return new mercator.Icon(t, o, e, i)
+    }, mercator.Icon.prototype.draw = function () {
+        if (this.subChart.isActive()) return this.icon = this.createShape(this.center, this.size, this.fillColor, this.rotationAngle, seatsUnicode(this.iconContent)), this.applyElementAttributes(), this.objectDrawn(), this
+    }, mercator.Icon.prototype.createShape = function (t, o, e, i, n) {
+        return this.designer.drawer.text(t.x, t.y, n, {
+            "font-size": o,
+            "font-family": "seatsdesigner"
+        }).toLayer("objectsLayer", this.designer, this.zIndex).zoomAndRotateAround(i, this.getCenter(), this.designer).applyZoom(this.designer)
+    }, mercator.Icon.prototype.bbox = function () {
+        return new mercator.RectangleShape(this.center, this.size, this.size, this.rotationAngle).bbox()
+    }, mercator.Icon.prototype.visibleElementsSet = function () {
+        return mercator.set(this.icon, this.positionGuides)
+    }, mercator.Icon.prototype.moved = function (t) {
+        this.center = this.center.add(t), this.refreshOutOfBounds(), this.redraw()
+    }, mercator.Icon.prototype.redraw = function () {
+        this.drawn() && (this.undraw(), this.draw())
+    }, mercator.Icon.prototype.drawn = function () {
+        return this.icon
+    }, mercator.Icon.prototype.undraw = function () {
+        this.subChart.isActive() && (this.objectUndrawn(), this.selector.undraw(), this.icon && (this.icon.remove(), this.icon = null))
+    }, mercator.Icon.prototype.determineStrokeWidth = function () {
+        return 0
+    }, mercator.Icon.prototype.determineDefaultColor = function () {
+        return this.fillColor
+    }, mercator.Icon.prototype.rotated = function (t, o) {
+        this.center = this.center.rotateAround(t, o), this.rotationAngle = wrapRotationAround(this.rotationAngle + o), this.redraw()
+    }, mercator.Icon.prototype.flip = function (t) {
+        return this.center = t.mirror(this.getCenter()), this.rotationAngle = wrapRotationAround(t.mirrorAngle(this.rotationAngle)), this.redraw(), this
+    }, mercator.Icon.prototype.setSize = function (t) {
+        this.size = t, this.redraw()
+    }, mercator.Icon.prototype.setIcon = function (t) {
+        this.iconContent = t, this.redraw()
+    }, mercator.Icon.prototype.setOpacity = function (t) {
+        this.opacity = t, this.applyElementAttributes()
+    }, mercator.Icon.prototype.setRotationAngle = function (t) {
+        this.rotationAngle = wrapRotationAround(t), this.redraw()
+    }, mercator.Icon.prototype.getCenter = function () {
+        return this.center
+    }, mercator.Icon.prototype.getRotation = function () {
+        return 0
+    }, mercator.Icon.prototype.remove = function () {
+        this.subChart.icons.remove(this)
+    }, mercator.Icon.prototype.svgElement = function () {
+        return this.icon
+    }, mercator.Icon.prototype.duplicate = function (t) {
+        return this.subChart.icons.add(this.clone(t))
+    }, mercator.Icon.prototype.clone = function (t) {
+        const o = new mercator.Icon(this.center, this.size, this.iconContent, t);
+        return o.rotationAngle = this.rotationAngle, o.opacity = this.opacity, o.fillColor = this.fillColor, o
+    }, mercator.Icon.prototype.applyElementAttributes = function () {
+        this.icon && this.icon.attr({
+            fill: this.determineBaseColor(),
+            "stroke-width": 1,
+            opacity: this.determineOpacity()
+        })
+    }, mercator.Icon.prototype.determineOpacity = function () {
+        return this.opacity / 100
+    }, mercator.Icon.prototype.setSmartType = function (t) {
+        this.iconContent = t, this.redraw()
+    }, mercator.Icon.prototype.setFillColor = function (t) {
+        let o = new mercator.Color(this.fillColor),
+            e = new mercator.Color(t);
+        return this.fillColor = t, o.isDark() !== e.isDark() ? this.redraw() : this.applyElementAttributes(), this
+    };
 mercator.Icons = function (t) {
     this.subChart = t, this.designer = t.designer, this.icons = []
 }, mercator.Icons.prototype.draw = function (t) {
@@ -10970,8 +10565,8 @@ mercator.Layers = function (e) {
 };
 mercator.Layer = function (e, t) {
     this.name = e, this.previousLayer = t, this.objects = new SortedArray(mercator.Layer.compareObjects)
-}, mercator.Layer.compareObjects = ((e, t) => e.seatsioZIndex - t.seatsioZIndex), mercator.Layer.prototype.add = function (e, t = Number.POSITIVE_INFINITY) {
-    e.seatsioLayer = this, e.seatsioZIndex = t;
+}, mercator.Layer.compareObjects = ((e, t) => e.mercatorZIndex - t.mercatorZIndex), mercator.Layer.prototype.add = function (e, t = Number.POSITIVE_INFINITY) {
+    e.mercatorLayer = this, e.mercatorZIndex = t;
     let s = this.objects.insert(e);
     var i = this.findObjectToInsertAfter(s);
     i ? e.insertAfter(i) : e.back()
@@ -10980,7 +10575,7 @@ mercator.Layer = function (e, t) {
 }, mercator.Layer.prototype.findObjectToInsertAfter = function (e) {
     return 0 === e ? this.findFirstObjectInPreviousLayer() : this.objects[e - 1]
 }, mercator.Layer.prototype.remove = function (e) {
-    this.objects.remove(e), e.seatsioLayer = void 0, e.seatsioZIndex = void 0
+    this.objects.remove(e), e.mercatorLayer = void 0, e.mercatorZIndex = void 0
 };
 mercator.DoNothingState = function () { }, mercator.DoNothingState.prototype.name = "?????", mercator.DoNothingState.prototype.stateGroupName = "", mercator.DoNothingState.prototype.init = function () { }, mercator.DoNothingState.prototype.onCanvasMouseDown = function () { }, mercator.DoNothingState.prototype.onCanvasRightMouseButtonDown = function () { }, mercator.DoNothingState.prototype.onCanvasMouseUp = function () { }, mercator.DoNothingState.prototype.onCanvasMouseMove = function () { }, mercator.DoNothingState.prototype.onCanvasMouseLeave = function () { }, mercator.DoNothingState.prototype.onCanvasMouseUp = function () { }, mercator.DoNothingState.prototype.onCanvasClick = function () { }, mercator.DoNothingState.prototype.onDelete = function () { }, mercator.DoNothingState.prototype.exit = function (t) { }, mercator.DoNothingState.prototype.onDuplicate = function () { }, mercator.DoNothingState.prototype.onCut = function () { }, mercator.DoNothingState.prototype.onCopy = function () { }, mercator.DoNothingState.prototype.onNormalizeRows = function () { }, mercator.DoNothingState.prototype.onStraighten = function () { }, mercator.DoNothingState.prototype.onEvenlySpace = function () { }, mercator.DoNothingState.prototype.onAlignRowsCenter = function () { }, mercator.DoNothingState.prototype.onAlignRowsLeft = function () { }, mercator.DoNothingState.prototype.onAlignRowsRight = function () { }, mercator.DoNothingState.prototype.onFlip = function (t) { }, mercator.DoNothingState.prototype.doCurve = function () { }, mercator.DoNothingState.prototype.reselect = function () { }, mercator.DoNothingState.prototype.deselect = function () { }, mercator.DoNothingState.prototype.onEscapePressed = function () { }, mercator.DoNothingState.prototype.labelAlwaysShownCheckboxChanged = function () { }, mercator.DoNothingState.prototype.moveLabelUpClicked = function () { }, mercator.DoNothingState.prototype.moveLabelDownClicked = function () { }, mercator.DoNothingState.prototype.moveLabelLeftClicked = function () { }, mercator.DoNothingState.prototype.moveLabelRightClicked = function () { }, mercator.DoNothingState.prototype.onObjectMouseOver = function () { }, mercator.DoNothingState.prototype.onObjectClicked = function () { }, mercator.DoNothingState.prototype.onObjectDoubleClicked = function () { }, mercator.DoNothingState.prototype.onObjectMouseOut = function () { }, mercator.DoNothingState.prototype.onObjectMouseDown = function () { }, mercator.DoNothingState.prototype.onObjectMouseUp = function () { }, mercator.DoNothingState.prototype.onObjectDragged = function () { }, mercator.DoNothingState.prototype.onObjectDragStarted = function () { }, mercator.DoNothingState.prototype.onObjectDragEnded = function () { }, mercator.DoNothingState.prototype.onPolygonCornerPointDragged = function () { }, mercator.DoNothingState.prototype.onPolygonCornerPointDragStarted = function () { }, mercator.DoNothingState.prototype.onPolygonCornerPointDragEnded = function () { }, mercator.DoNothingState.prototype.onPolygonSideDragged = function () { }, mercator.DoNothingState.prototype.onPolygonSideDragStarted = function () { }, mercator.DoNothingState.prototype.onPolygonSideDragEnded = function () { }, mercator.DoNothingState.prototype.onShiftPressed = function () { }, mercator.DoNothingState.prototype.onShiftReleased = function () { }, mercator.DoNothingState.prototype.onCtrlPressed = function () { }, mercator.DoNothingState.prototype.onCtrlReleased = function () { }, mercator.DoNothingState.prototype.onAltPressed = function () { }, mercator.DoNothingState.prototype.onAltReleased = function () { }, mercator.DoNothingState.prototype.onSpacebarPressed = function () { }, mercator.DoNothingState.prototype.onSpacebarReleased = function () { }, mercator.DoNothingState.prototype.onModifierChange = function () { }, mercator.DoNothingState.prototype.onFocalPointClicked = function () { }, mercator.DoNothingState.prototype.onArrowPressed = function () { }, mercator.DoNothingState.prototype.onPreviewChanges = function () { }, mercator.DoNothingState.prototype.onPreviewChangesEnd = function () { }, mercator.DoNothingState.prototype.hasSelectedObjects = function () {
     return this.getSelectedObjects().length > 0
@@ -11186,7 +10781,7 @@ mercator.MultipleRowModeState = class extends mercator.RowModeState {
 };
 
 mercator.ObjectsSelectedState = function (e, t, s) {
-    this.designer = e, this.selectedObjects = t, this.selectedObjectsSettings = s, this.selectedObjectsObject = null, this.hoveredObject = null, this.addObjectsModifierPressed = !1, this.selector = this.designer && this.designer.selector, this.name = "ObjectsSelectedState", this.toolName = "hand-o-up", this.toolHint = "selected-hint", this.defaultToolText = {
+    this.designer = e, this.selectedObjects = t, this.selectedObjectsSettings = s, this.selectedObjectsObject = null, this.hoveredObject = null, this.addObjectsModifierPressed = !1, this.selector = this.designer && this.designer.selector, this.name = "ObjectsSelectedState", this.toolName = "mouse-pointer", this.toolHint = "selected-hint", this.defaultToolText = {
         toolName: this.toolName,
         toolHint: this.toolHint
     }
@@ -11330,7 +10925,7 @@ mercator.ObjectsSelectedState = function (e, t, s) {
 };
 
 mercator.SelectionModeState = function (e) {
-    this.designer = e, this.name = "SelectionModeState", this.toolName = "hand-o-up", this.toolHint = "select-hint", this.defaultToolText = {
+    this.designer = e, this.name = "SelectionModeState", this.toolName = "mouse-pointer", this.toolHint = "select-hint", this.defaultToolText = {
         toolName: this.toolName,
         toolHint: this.toolHint
     }
@@ -11555,7 +11150,7 @@ mercator.MultipleRowExtendingState = function (t, i, e) {
 };
 
 mercator.SelectingState = function (e, t) {
-    this.fromPosition = e, this.designer = t, this.name = "SelectingState", this.toolName = "hand-o-up", this.toolHint = "select-hint"
+    this.fromPosition = e, this.designer = t, this.name = "SelectingState", this.toolName = "mouse-pointer", this.toolHint = "select-hint"
 }, mercator.SelectingState.prototype = new mercator.ToolState, mercator.SelectingState.prototype.init = function () {
     this.designer.chairMousePointer.hide(), this.designer.selector.startSelection(this.fromPosition)
 }, mercator.SelectingState.prototype.onCanvasMouseUp = function () {

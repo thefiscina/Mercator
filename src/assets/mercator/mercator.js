@@ -368,7 +368,7 @@ function _toPrimitive(e, t) {
         }(), r.SeatingChart = function (e, t) {
             r.charts.push(this), r.isFirstChartOnPage = void 0 === r.isFirstChartOnPage, this.init(e, t), (new r.SeatingChartConfigValidator).validate(e), this.selectedObjectsInput = null, this.storage = r.MercatorStorage.create(function () {
                 return sessionStorage
-            }, "mercator", "Session storage not supported; stored data (e.g. hold token) will be lost after page refresh"), this.config.maxSelectedObjects = u(this.config.maxSelectedSeats).orElse(this.config.maxSelectedObjects), this.config.objectColor = u(this.config.seatColor).orElse(this.config.objectColor), this.config.objectLabel = u(this.config.seatLabel).orElse(this.config.objectLabel), this.config.objectIcon = u(this.config.seatIcon).orElse(this.config.objectIcon), this.config.selectedObjectsInputName = u(this.config.selectedSeatsInputName).orElse(this.config.selectedObjectsInputName), this.config.selectedObjects = u(this.config.selectedSeats).orElse(this.config.selectedObjects), this.config.onObjectSelected = u(this.config.onSeatSelected).orElse(this.config.onObjectSelected), this.config.onObjectDeselected = u(this.config.onSeatDeselected).orElse(this.config.onObjectDeselected), this.config.onObjectMouseOver = u(this.config.onSeatMouseOver).orElse(this.config.onObjectMouseOver), this.config.onObjectMouseOut = u(this.config.onSeatMouseOut).orElse(this.config.onObjectMouseOut), this.config.onSelectedObjectBooked = u(this.config.onSelectedSeatBooked).orElse(this.config.onSelectedObjectBooked), this.config.onBestAvailableSelected = u(this.config.onBestAvailableSeatsSelected).orElse(this.config.onBestAvailableSelected), this.config.onBestAvailableSelectionFailed = u(this.config.onBestAvailableSeatsSelectionFailed).orElse(this.config.onBestAvailableSelectionFailed), this.config.holdOnSelect = u(this.config.reserveOnSelect).orElse(this.config.holdOnSelect), this.config.regenerateHoldToken = u(this.config.regenerateReservationToken).orElse(this.config.regenerateHoldToken), this.config.holdToken = null !== (t = u(this.config.reservationToken).orElse(this.config.holdToken)) ? t : void 0, this.config.holdTokenInputName = u(this.config.reservationTokenInputName).orElse(this.config.holdTokenInputName), this.config.onHoldSucceeded = u(this.config.onReservationSucceeded).orElse(this.config.onHoldSucceeded), this.config.onHoldFailed = u(this.config.onReservationFailed).orElse(this.config.onHoldFailed), this.config.onReleaseHoldSucceeded = u(this.config.onUnreservationSucceeded).orElse(this.config.onReleaseHoldSucceeded), this.config.onReleaseHoldFailed = u(this.config.onUnreservationFailed).orElse(this.config.onReleaseHoldFailed), this.config.apiUrl = r.apiUrl, this.config.publicApiUrl = r.publicApiUrl, this.config.dataCollectorUrl = r.dataCollectorUrl, this.config.ablySubscribeKey = r.ablySubscribeKey, this.config.isRendererDesignSwitchEnabled = r.isRendererDesignSwitchEnabled, this.selectedObjects = this.selectedSeats = [], this.holdToken = null, this.reservationToken = null, this.requestIdCtr = 0, this.requestCallbacks = {}, this.requestErrorCallbacks = {}, this.state = "INITIAL", this.initialContainerDimensions = null, this.domElementListener = null, this.iframeElementListener = null, this.errorSentToDataCollector = !1, this.sentWarnings = [], this.seatsioLoadedDeferred = new g, this.containerVisible = new g
+            }, "mercator", "Session storage not supported; stored data (e.g. hold token) will be lost after page refresh"), this.config.maxSelectedObjects = u(this.config.maxSelectedSeats).orElse(this.config.maxSelectedObjects), this.config.objectColor = u(this.config.seatColor).orElse(this.config.objectColor), this.config.objectLabel = u(this.config.seatLabel).orElse(this.config.objectLabel), this.config.objectIcon = u(this.config.seatIcon).orElse(this.config.objectIcon), this.config.selectedObjectsInputName = u(this.config.selectedSeatsInputName).orElse(this.config.selectedObjectsInputName), this.config.selectedObjects = u(this.config.selectedSeats).orElse(this.config.selectedObjects), this.config.onObjectSelected = u(this.config.onSeatSelected).orElse(this.config.onObjectSelected), this.config.onObjectDeselected = u(this.config.onSeatDeselected).orElse(this.config.onObjectDeselected), this.config.onObjectMouseOver = u(this.config.onSeatMouseOver).orElse(this.config.onObjectMouseOver), this.config.onObjectMouseOut = u(this.config.onSeatMouseOut).orElse(this.config.onObjectMouseOut), this.config.onSelectedObjectBooked = u(this.config.onSelectedSeatBooked).orElse(this.config.onSelectedObjectBooked), this.config.onBestAvailableSelected = u(this.config.onBestAvailableSeatsSelected).orElse(this.config.onBestAvailableSelected), this.config.onBestAvailableSelectionFailed = u(this.config.onBestAvailableSeatsSelectionFailed).orElse(this.config.onBestAvailableSelectionFailed), this.config.holdOnSelect = u(this.config.reserveOnSelect).orElse(this.config.holdOnSelect), this.config.regenerateHoldToken = u(this.config.regenerateReservationToken).orElse(this.config.regenerateHoldToken), this.config.holdToken = null !== (t = u(this.config.reservationToken).orElse(this.config.holdToken)) ? t : void 0, this.config.holdTokenInputName = u(this.config.reservationTokenInputName).orElse(this.config.holdTokenInputName), this.config.onHoldSucceeded = u(this.config.onReservationSucceeded).orElse(this.config.onHoldSucceeded), this.config.onHoldFailed = u(this.config.onReservationFailed).orElse(this.config.onHoldFailed), this.config.onReleaseHoldSucceeded = u(this.config.onUnreservationSucceeded).orElse(this.config.onReleaseHoldSucceeded), this.config.onReleaseHoldFailed = u(this.config.onUnreservationFailed).orElse(this.config.onReleaseHoldFailed), this.config.apiUrl = r.apiUrl, this.config.publicApiUrl = r.publicApiUrl, this.config.dataCollectorUrl = r.dataCollectorUrl, this.config.ablySubscribeKey = r.ablySubscribeKey, this.config.isRendererDesignSwitchEnabled = r.isRendererDesignSwitchEnabled, this.selectedObjects = this.selectedSeats = [], this.holdToken = null, this.reservationToken = null, this.requestIdCtr = 0, this.requestCallbacks = {}, this.requestErrorCallbacks = {}, this.state = "INITIAL", this.initialContainerDimensions = null, this.domElementListener = null, this.iframeElementListener = null, this.errorSentToDataCollector = !1, this.sentWarnings = [], this.mercatorLoadedDeferred = new g, this.containerVisible = new g
         }, r.SeatingChart.prototype = new r.Embeddable, r.SeatingChart.prototype.debounce = function (i, o) {
             var r;
             return function () {
@@ -660,14 +660,14 @@ function _toPrimitive(e, t) {
             }, e, void 0)
         }, r.SeatingChart.prototype.sendMsgToIframeWhenAvailable = function (e) {
             var t = this;
-            return this.seatsioLoadedDeferred.then(function () {
+            return this.mercatorLoadedDeferred.then(function () {
                 return t.isAllowedToRender()
             }).then(function () {
                 return t.asyncRequest(e)
             })
         }, r.SeatingChart.prototype.asyncRequestAfterMercatorLoaded = function (e, t, n, i) {
             var o = this;
-            return this.seatsioLoadedDeferred.then(function () {
+            return this.mercatorLoadedDeferred.then(function () {
                 return o.asyncRequest(e, t, n, i)
             })
         }, r.SeatingChart.prototype.asyncRequest = function (e, i, o, r) {
@@ -730,7 +730,7 @@ function _toPrimitive(e, t) {
             }).length
         }, r.SeatingChart.prototype.messageHandlers = {
             mercatorCharge: function (e, t, n) {
-                t.seatsioLoadedDeferred.resolve();
+                t.mercatorLoadedDeferred.resolve();
                 var i = r.SeatingChart.serializeConfig(t.config),
                     o = {
                         renderingStartMillis: t.renderingStart.getTime(),
@@ -940,7 +940,7 @@ function _toPrimitive(e, t) {
                     localSettings: t.storage.getStore()
                 })
             },
-            seatsioRendered: function (e, t) {
+            mercatorRendered: function (e, t) {
                 t.container().removeChild(t.loadingScreen), t.renderedCallback && t.renderedCallback(), t.config.onDesignerRendered && t.config.onDesignerRendered(this), t.isRendered = !0
             },
             designerRenderingFailed: function (e, t) {
@@ -1008,7 +1008,7 @@ function _toPrimitive(e, t) {
                 key: "isSupported",
                 value: function (e) {
                     try {
-                        return e().setItem("seatsioStorageSupportedTest", "x"), e().removeItem("seatsioStorageSupportedTest"), !0
+                        return e().setItem("mercatorStorageSupportedTest", "x"), e().removeItem("mercatorStorageSupportedTest"), !0
                     } catch (e) {
                         return !1
                     }

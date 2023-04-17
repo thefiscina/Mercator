@@ -4,35 +4,31 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link rel="stylesheet" href="./frame/flaticon.css">
     <script src="./frame/jquery.1.11.0.min.js"></script>
     <script src="./frame/bootstrap.min.js"></script>
     <script src="./frame/fontfaceobserver.2.0.9.standalone.js"></script>
-    <!-- <link href="./frame/css" rel="stylesheet"> -->
-    <!-- <link href="./frame/css2" rel="stylesheet"> -->
-    <link rel="stylesheet" href="./frame/font-seatsdesigner.css">
     <link rel="stylesheet" href="./frame/font-awesome.min.css">
     <link rel="stylesheet" href="./frame/bootstrap.css">
     <link rel="stylesheet" href="./frame/chartDesigner.css">
-    <!-- <link rel="stylesheet" href="./frame/gui.css"> -->
-    <link rel="stylesheet" href="./frame/DesignerApp.css">
+    <link rel="stylesheet" href="./frame/mercatorStl.css">
     <script src="./mercator.js"></script>
     <script>
-        let seatsioNoConflict = mercator;
+        let mercatorNoConflict = mercator;
     </script>
     <script src="./frame/less.1.7.0.min.js"></script>
+    <script src="../mercator/modules/pt.js"></script>
+    <script src="../mercator/modules/iconsData.js"></script>
     <script src="../mercator/modules/initiate.js"></script>
     <script src="../mercator/modules/start_modules.js"></script>
     <script src="../mercator/modules/internal.js"></script>
-    <!-- <script src="./frame/chartDesigner_old.js"></script> -->
     <script src="./frame/chartDesignerIframe.js"></script>
 </head>
 
 <body style="margin: 0; padding: 0;">
-    <script src="./frame/errorHandling.js"></script>
+    <!-- <script src="./frame/errorHandling.js"></script> -->
     <div id="chart"></div>
-    <div id="designerApp"></div>
-    <div id="chartDesignerWrapper">
+    <div id="mercatorStl"></div>
+    <div id="frameIdMercator">
         <form method="post" class="form-inline" id="chartForm">
             <div id="alert">
                 <div class="message">

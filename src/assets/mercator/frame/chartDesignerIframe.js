@@ -8,7 +8,7 @@ function renderChart(config, apiUrl, publicApiUrl, dataCollectorUrl, localSettin
     var chartCreated = _.partial(notifyParent, 'chartCreated');
     var chartUpdated = _.partial(notifyParent, 'chartUpdated');
     var chartPublished = _.partial(notifyParent, 'chartPublished');
-    var chartRendered = _.partial(notifyParent, 'seatsioRendered');
+    var chartRendered = _.partial(notifyParent, 'mercatorRendered');
     var designerRenderingFailed = _.partial(notifyParent, 'designerRenderingFailed');
     var statusChanged = _.partial(notifyParent, 'statusChanged');
     var onExitRequested = parsedConfig.showExitButton ? _.partial(notifyParent, 'exitRequested') : null;
@@ -19,7 +19,7 @@ function renderChart(config, apiUrl, publicApiUrl, dataCollectorUrl, localSettin
     chartDesigner
         .render()
         .then(chartRendered)
-        .fail(showRenderingError)
+        
         .fail(designerRenderingFailed);
     return chartDesigner;
 }

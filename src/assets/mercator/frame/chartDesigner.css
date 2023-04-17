@@ -1,17 +1,17 @@
-#chartDesignerWrapper {
+#frameIdMercator {
   position: absolute;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
 }
-#chartDesignerWrapper .label.published {
+#frameIdMercator .label.published {
   background-color: #88aa00;
 }
-#chartDesignerWrapper .label.draft {
+#frameIdMercator .label.draft {
   background-color: #AEAEAE;
 }
-#chartDesignerWrapper svg {
+#frameIdMercator svg {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -19,13 +19,13 @@
   -ms-user-select: none;
   user-select: none;
 }
-#chartDesignerWrapper svg image {
+#frameIdMercator svg image {
   pointer-events: none;
 }
-#chartDesignerWrapper .chartdesigner {
+#frameIdMercator .chartdesigner {
   height: 100%;
 }
-#chartDesignerWrapper #alert {
+#frameIdMercator #alert {
   position: fixed;
   width: 100%;
   z-index: 9999;
@@ -36,26 +36,26 @@
   cursor: pointer;
   border-bottom: 2px solid white;
 }
-#chartDesignerWrapper #alert.notification {
+#frameIdMercator #alert.notification {
   background-color: #88aa00;
 }
-#chartDesignerWrapper #alert.warning {
+#frameIdMercator #alert.warning {
   background-color: #f4a129;
 }
-#chartDesignerWrapper #alert.keep-visible #ok-got-it-btn {
+#frameIdMercator #alert.keep-visible #ok-got-it-btn {
   margin-left: 0.5em;
 }
-#chartDesignerWrapper #alert.keep-visible .dismiss-alert {
+#frameIdMercator #alert.keep-visible .dismiss-alert {
   display: none;
 }
-#chartDesignerWrapper #alert.auto-hide #ok-got-it-btn {
+#frameIdMercator #alert.auto-hide #ok-got-it-btn {
   display: none;
 }
-#chartDesignerWrapper #alert.auto-hide .dismiss-alert {
+#frameIdMercator #alert.auto-hide .dismiss-alert {
   display: inline-block;
   width: 4%;
 }
-#chartDesignerWrapper #alert .message {
+#frameIdMercator #alert .message {
   display: inline-block;
   width: 95%;
 }

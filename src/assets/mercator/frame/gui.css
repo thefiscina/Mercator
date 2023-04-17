@@ -1,13 +1,13 @@
-#chartDesignerWrapper.scrubbingActive * {
+#frameIdMercator.scrubbingActive * {
   cursor: ew-resize !important;
   user-select: none !important;
   -webkit-user-select: none !important;
   -moz-user-select: -moz-none !important;
 }
-#chartDesignerWrapper.scrubbingActive.scrubbing-minReached * {
+#frameIdMercator.scrubbingActive.scrubbing-minReached * {
   cursor: e-resize !important;
 }
-#chartDesignerWrapper.scrubbingActive.scrubbing-maxReached * {
+#frameIdMercator.scrubbingActive.scrubbing-maxReached * {
   cursor: w-resize !important;
 }
 .editableValue {
@@ -55,7 +55,7 @@
 .editableValue.mode-valueInput .valueLabel {
   display: none;
 }
-#chartDesignerWrapper.scrubbingActive .editableValue,
+#frameIdMercator.scrubbingActive .editableValue,
 .editableValue.mode-valueLabel:active {
   border-color: transparent;
   background-color: #e1e1e1;

@@ -22,7 +22,8 @@ var _slicedToArray = function () {
         }(e, t);
         throw new TypeError("Invalid attempt to destructure non-iterable instance")
     }
-}(),
+}()
+    ,
     _createClass = function () {
         function e(e, t) {
             for (var o = 0; o < t.length; o++) {
@@ -62,7 +63,7 @@ var _extends = Object.assign || function (e) {
     }
     return e
 },
-    DesignerApp = function (e) {
+    mercatorStl = function (e) {
         function t(e) {
             _classCallCheck(this, t);
             var o = _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
@@ -174,7 +175,7 @@ var _extends = Object.assign || function (e) {
                     R = !!mercator.designer.onExitRequested,
                     f = mercator.designer.showSectionContentsEnabled();
                 return React.createElement("div", {
-                    className: "DesignerApp " + (this.props.uiState.cursor && "custom-cursor") + " agent-" + c + " canvas-" + this.props.document.colorScheme,
+                    className: "mercatorStl " + (this.props.uiState.cursor && "custom-cursor") + " agent-" + c + " canvas-" + this.props.document.colorScheme,
                     style: {
                         cursor: this.props.uiState.cursor
                     }
@@ -415,30 +416,36 @@ var _extends = Object.assign || function (e) {
                         in: !!this.props.uiState.floatingPicker
                     }), React.createElement(l, this.props.uiState.floatingPickerProps)), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, g, {
                         in: !!m
-                    }), React.createElement(FirstTimeTutorial, null)), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, g, {
+                    }), React.createElement(FirstTimeTutorial, null)
+                    ),
+                    React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, g, {
                         in: !!this.props.uiState.globalTooltipVisible
                     }), React.createElement(GlobalTooltip, {
                         position: this.props.uiState.globalTooltipPosition
-                    }, this.props.uiState.globalTooltipContents)), React.createElement(ContextualMenu, {
+                    }, this.props.uiState.globalTooltipContents)),
+                    React.createElement(ContextualMenu, {
                         options: this.props.uiState.contextualMenuOptions,
                         settings: this.props.uiState.contextualMenuSettings
                     }))
             }
         }]), t
     }();
+
 mercator.PANEL_DIMENSIONS = {
     leftPanelWidth: 43,
     topPanelHeight: 45,
     rightPanelWidth: 321,
     bottomPanelHeight: 26
-}, Dialogs = {
-    FloatingDialogs: {},
-    ModalDialogs: {},
-    FloatingPickers: {}
-}, Inspector = {
-    Sheets: {},
-    GUI: {}
-};
+},
+    Dialogs = {
+        FloatingDialogs: {},
+        ModalDialogs: {},
+        FloatingPickers: {}
+    },
+    Inspector = {
+        Sheets: {},
+        GUI: {}
+    };
 var _createClass = function () {
     function e(e, t) {
         for (var a = 0; a < t.length; a++) {
@@ -484,8 +491,13 @@ var _extends = Object.assign || function (e) {
             var a = _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
             return a.state = {
                 stage: 0,
-                stageVisible: !0
-            }, a.maxStages = 4, a.tutorialSlideEnter = 2400, a.tutorialSlideExit = 1500, a.onKeyDown = a.onKeyDown.bind(a), a
+                stageVisible: 0,//MOSTRAR PRIMEIRO TUTORIAL
+            },
+                a.maxStages = 4,
+                a.tutorialSlideEnter = 2400,
+                a.tutorialSlideExit = 1500,
+                a.onKeyDown = a.onKeyDown.bind(a),
+                a
         }
         return _inherits(t, React.Component), _createClass(t, [{
             key: "componentDidMount",
@@ -506,14 +518,16 @@ var _extends = Object.assign || function (e) {
             key: "nextStage",
             value: function () {
                 var e = this;
-                this.state.stage < this.maxStages ? (this.setState({
-                    stage: this.state.stage + 1,
-                    showBackdrop: !0
-                }), setTimeout(function () {
-                    return e.setState({
-                        showBackdrop: !1
-                    })
-                }, this.tutorialSlideExit)) : this.completeTutorial()
+                this.state.stage < this.maxStages ? (
+                    this.setState({
+                        stage: this.state.stage + 1,
+                        showBackdrop: !0
+                    }),
+                    setTimeout(function () {
+                        return e.setState({
+                            showBackdrop: !1
+                        })
+                    }, this.tutorialSlideExit)) : this.completeTutorial()
             }
         }, {
             key: "completeTutorial",
@@ -1046,6 +1060,7 @@ var Button = function (e) {
             var e = void 0,
                 o = void 0,
                 t = void 0;
+
             switch (this.props.preset) {
                 case "svg-icon":
                     o = this.compositeTooltip(), e = React.createElement("img", {
@@ -1074,35 +1089,111 @@ var Button = function (e) {
                         className: "caption"
                     }, this.props.caption));
                     break;
-                case "toolbar-icon-caption":
+                case "hud-icon":
+                    var icon = this.props.type;
+                    switch (this.props.type) {
+                        case "row-single":
+                            icon = 'ellipsis-h';
+                            break;
+                        case "table-round":
+                            icon = "circle-o";
+                            break;
+                        case "ga-rectangle":
+                            icon = "square-o";
+                            break;
+                        case "shape-rectangle":
+                            icon = "square";
+                            break;
+                        case "text":
+                            icon = "text-width";
+                            break;
+                        case "delete":
+                            icon = "trash-o";
+                            break;
+                        case "restrooms-unisex":
+                            icon = "child";
+                            break;
+                    }
                     e = [React.createElement("div", {
                         key: "icon",
-                        className: "icon fa fa-" + this.props.type
-                    }), React.createElement("div", {
+                        className: `icon fa fa-${icon}`
+                    }),
+                    React.createElement("div", {
                         key: "caption",
                         className: "caption"
                     }, this.props.caption)];
                     break;
                 case "tool":
-                case "float-icon":
+                case "icon-actions":
+                    var icon = this.props.type;
+                    switch (this.props.type) {
+                        case "row-single":
+                            icon = 'ellipsis-h';
+                            break;
+                        case "table-round":
+                            icon = "circle-o";
+                            break;
+                        case "ga-rectangle":
+                            icon = "square-o";
+                            break;
+                        case "shape-rectangle":
+                            icon = "square";
+                            break;
+                        case "text":
+                            icon = "text-width";
+                            break;
+                        case "delete":
+                            icon = "trash-o";
+                            break;
+                        case "restrooms-unisex":
+                            icon = "child";
+                            break;
+                    }
                     e = [React.createElement("div", {
                         key: "icon",
-                        className: "icon fa fa-" + this.props.type
-                    }), React.createElement("div", {
+                        className: `icon fa fa-${icon}`
+                    }),
+                    React.createElement("div", {
                         key: "tooltip",
                         className: "tooltip"
-                    }, this.props.caption, " ", this.props.keyHint && React.createElement("div", {
-                        className: "key-hint"
-                    }, this.props.keyHint))];
+                    },
+                        this.props.caption, " ", this.props.keyHint && React.createElement("div", {
+                            className: "key-hint"
+                        },
+                            this.props.keyHint))];
                     break;
                 case "hud-icon":
                 case "hud-icon-circle":
                 case "inspector-icon":
                 case "toolbar-icon":
                 case "switcher":
+                    var icon = this.props.type;
+                    switch (this.props.type) {
+                        case "row-single":
+                            icon = 'ellipsis-h';
+                            break;
+                        case "table-round":
+                            icon = "circle-o";
+                            break;
+                        case "ga-rectangle":
+                            icon = "square-o";
+                            break;
+                        case "shape-rectangle":
+                            icon = "square";
+                            break;
+                        case "text":
+                            icon = "text-width";
+                            break;
+                        case "delete":
+                            icon = "trash-o";
+                            break;
+                        case "restrooms-unisex":
+                            icon = "child";
+                            break;
+                    }
                     o = this.compositeTooltip(), e = React.createElement("div", {
                         key: "icon",
-                        className: "icon fa fa-" + this.props.type
+                        className: `icon fa fa-${icon}`
                     });
                     break;
                 case "hud-caption":
@@ -1146,6 +1237,7 @@ var Button = function (e) {
         }
     }]), o
 }();
+
 var _createClass = function () {
     function e(e, t) {
         for (var n = 0; n < t.length; n++) {
@@ -1178,6 +1270,7 @@ function _inherits(e, t) {
         }
     }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t)
 }
+
 var CanvasGrabber = function (e) {
     function t(e) {
         _classCallCheck(this, t);
@@ -1273,6 +1366,7 @@ var CanvasGrabber = function (e) {
         }
     }]), t
 }();
+
 var _createClass = function () {
     function e(e, t) {
         for (var n = 0; n < t.length; n++) {
@@ -1472,6 +1566,7 @@ var CategoryInput = function (e) {
         }
     }]), t
 }();
+
 var _createClass = function () {
     function e(e, t) {
         for (var n = 0; n < t.length; n++) {
@@ -1644,6 +1739,7 @@ var CategoryPicker = function (e) {
         }
     }]), t
 }();
+
 var _createClass = function () {
     function e(e, t) {
         for (var n = 0; n < t.length; n++) {
@@ -1676,6 +1772,7 @@ function _inherits(e, t) {
         }
     }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t)
 }
+
 var CategoryPickerOption = function (e) {
     function t(e) {
         _classCallCheck(this, t);
@@ -1875,6 +1972,7 @@ var CategoryPickerOption = function (e) {
         }
     }]), t
 }();
+
 var _createClass = function () {
     function e(e, t) {
         for (var r = 0; r < t.length; r++) {
@@ -1907,6 +2005,7 @@ function _inherits(e, t) {
         }
     }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t)
 }
+
 var ChartOverlayMessages = function (e) {
     function t() {
         return _classCallCheck(this, t), _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
@@ -1936,6 +2035,7 @@ var ChartOverlayMessages = function (e) {
         }
     }]), t
 }();
+
 var _createClass = function () {
     function e(e, t) {
         for (var n = 0; n < t.length; n++) {
@@ -1968,6 +2068,7 @@ function _inherits(e, t) {
         }
     }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t)
 }
+
 var CheckboxInput = function (e) {
     function t() {
         return _classCallCheck(this, t), _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
@@ -2027,6 +2128,7 @@ var CheckboxInput = function (e) {
         }
     }]), t
 }();
+
 var _createClass = function () {
     function e(e, t) {
         for (var i = 0; i < t.length; i++) {
@@ -3613,7 +3715,7 @@ var IconGrid = function (e) {
                     },
                     className: "IconGridItem " + (e.props.value === t && "active")
                 }, React.createElement("span", {
-                    className: "icon icon-" + t
+                    className: "icon fa fa-" + t
                 }))
             })))
         }
@@ -4161,25 +4263,28 @@ var NavigationHUD = function (e) {
                     return e.joystickRef = t
                 },
                 onMouseDown: this.onMouseDown.bind(this)
-            })), React.createElement("div", {
-                className: "button-switcher"
-            }, React.createElement(Button, {
-                preset: "hud-icon",
-                type: "minus",
-                caption: d("zoom-out") + " (alt + mouse wheel)",
-                onClick: function () {
-                    return t.zoomOut()
+            })),
+                React.createElement("div", {
+                    className: "button-switcher"
                 },
-                disabled: this.props.zoomLevel <= this.props.minZoomLevel
-            }), React.createElement(Button, {
-                preset: "hud-icon",
-                type: "plus",
-                caption: d("zoom-in") + " (alt + mouse wheel)",
-                onClick: function () {
-                    return t.zoomIn()
-                },
-                disabled: this.props.zoomLevel >= this.props.maxZoomLevel
-            })))
+                    React.createElement(Button, {
+                        preset: "hud-icon",
+                        type: "minus",
+                        caption: d("zoom-out") + " (alt + mouse wheel)",
+                        onClick: function () {
+                            return t.zoomOut()
+                        },
+                        disabled: this.props.zoomLevel <= this.props.minZoomLevel
+                    }),
+                    React.createElement(Button, {
+                        preset: "hud-icon",
+                        type: "plus",
+                        caption: d("zoom-in") + " (alt + mouse wheel)",
+                        onClick: function () {
+                            return t.zoomIn()
+                        },
+                        disabled: this.props.zoomLevel >= this.props.maxZoomLevel
+                    })))
         }
     }]), t
 }();
@@ -5055,7 +5160,9 @@ var ReferenceChartPreview = function (e) {
         }
     }]), t
 }();
+
 ReferenceChartPreview.DRAG_NONE = 0, ReferenceChartPreview.DRAG_PANNING = 1, ReferenceChartPreview.DRAG_SEAT = 2, ReferenceChartPreview.DRAG_ROW = 3;
+
 var _createClass = function () {
     function e(e, t) {
         for (var n = 0; n < t.length; n++) {
@@ -5088,6 +5195,7 @@ function _inherits(e, t) {
         }
     }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t)
 }
+
 var SelectInput = function (e) {
     function t() {
         return _classCallCheck(this, t), _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
@@ -5127,6 +5235,7 @@ var SelectInput = function (e) {
         }
     }]), t
 }();
+
 var _createClass = function () {
     function e(e, t) {
         for (var n = 0; n < t.length; n++) {
@@ -5372,7 +5481,7 @@ function StatusBar(e) {
         c = void 0,
         n = e.selection.count,
         a = e.selection.subCount;
-    return ["hand-o-up", "select-brush", "select-seats", "category", "label"].includes(e.designer.tool) && n + a > 0 && (n > 0 ? c = d("objects-selected-count", {
+    return ["mouse-pointer", "select-brush", "select-seats", "category", "label"].includes(e.designer.tool) && n + a > 0 && (n > 0 ? c = d("objects-selected-count", {
         smart_count: n
     }) + (a > n ? " (" + d("children-count", {
         smart_count: a
@@ -5483,6 +5592,7 @@ function _inherits(e, t) {
         }
     }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t)
 }
+
 var TextInput = function (e) {
     function t(e) {
         _classCallCheck(this, t);
@@ -5769,7 +5879,7 @@ var ToolPicker = function (e) {
             showGroup: !1,
             hoverTooltip: !1
         }, o.definitions = {
-            "hand-o-up": ["selectCursor", "hand-o-up", "toolSelectCursor"],
+            "mouse-pointer": ["selectCursor", "mouse-pointer", "toolSelectCursor"],
             // "select-brush": ["selectBrush", "select-brush", "toolSelectBrush"],
             // "select-seats": ["selectSeats", "select-seats", "toolSelectSeats"],
             // "select-sameType": ["selectSameType", "select-sameType", "toolSelectSameType"],
@@ -5779,20 +5889,20 @@ var ToolPicker = function (e) {
             // "row-multiple": [mercator.Features.Type.ROWS, "row-multiple", "toolRowMultiple"],
             // "section-polygon": [mercator.Features.Type.SECTIONS, "section-polygon", "toolSection"],
             // "section-rectangle": [mercator.Features.Type.SECTIONS, "section-rectangle", "toolSection"],
-            
+
             "row-single": [mercator.Features.Type.ROWS, "row-single", "toolRowSingle"],
             // booth: [mercator.Features.Type.BOOTHS, "booth", "toolBooth"],
             "ga-rectangle": [mercator.Features.Type.AREAS, "ga-rectangle", "toolGaRectangle"],
             "ga-ellipse": [mercator.Features.Type.AREAS, "ga-ellipse", "toolGaEllipse"],
             "ga-polygon": [mercator.Features.Type.AREAS, "ga-polygon", "toolGaPolygon"],
-            
+
             "shape-rectangle": [mercator.Features.Type.SHAPES, "shape-rectangle", "toolShapeRectangle"],
             "shape-ellipse": [mercator.Features.Type.SHAPES, "shape-ellipse", "toolShapeEllipse"],
             "shape-polygon": [mercator.Features.Type.SHAPES, "shape-polygon", "toolShapePolygon"],
-            
+
             "table-round": [mercator.Features.Type.TABLES, "table-round", "toolTableRound"],
             "table-rectangle": [mercator.Features.Type.TABLES, "table-rectangle", "toolTableRectangle"],
-            
+
             text: [mercator.Features.Type.TEXTS, "text", "toolText"],
             image: [mercator.Features.Type.IMAGES, "image", "toolImageObject"],
             icon: [mercator.Features.Type.ICONS, "icon", "toolIcon"],
@@ -5814,11 +5924,11 @@ var ToolPicker = function (e) {
         key: "groupSiblings",
         value: function () {
             return [
-                ["row-single", "row-segmented", "row-multiple"],
-                ["section-polygon", "section-rectangle"],
-                ["ga-rectangle", "ga-ellipse", "ga-polygon"],
-                ["shape-rectangle", "shape-ellipse", "shape-polygon"],
-                ["table-round", "table-rectangle"]
+                // ["row-single", "row-segmented", "row-multiple"],
+                // ["section-polygon", "section-rectangle"],
+                // ["ga-rectangle", "ga-ellipse", "ga-polygon"],
+                // ["shape-rectangle", "shape-ellipse", "shape-polygon"],
+                // ["table-round", "table-rectangle"]
             ]
         }
     }, {
@@ -5933,7 +6043,7 @@ var ToolPicker = function (e) {
                 className: "indicator icon-tool-group-indicator"
             }) : null
         }
-    }, 
+    },
     {
         key: "toolSiblings",
         value: function (e) {
@@ -5946,7 +6056,7 @@ var ToolPicker = function (e) {
             })) : null
         }
     }
-    , {
+        , {
         key: "componentDidMount",
         value: function () {
             var e = this,
@@ -6009,25 +6119,30 @@ var ToolPicker = function (e) {
                 ref: function (t) {
                     return e.wrapperRef = t
                 }
-            }, this.toolGroup("hand-o-up"),
-             this.toolGroup("select-brush"),
-              this.toolGroup("select-seats"), 
-              this.toolGroup("select-sameType"),
-               this.toolGroup("node"),
+            }, this.toolGroup("mouse-pointer"),
+                this.toolGroup("select-brush"),
+                this.toolGroup("select-seats"),
+                this.toolGroup("select-sameType"),
+                this.toolGroup("node"),
                 React.createElement("div", {
-                className: "separator"
-            }), 
-            // this.toolGroup("focalpoint"), 
-            this.toolGroup("row-" + this.props.designer.lastGroupTool.row),
-             this.toolGroup("section-" + this.props.designer.lastGroupTool.section),
-              this.toolGroup("table-" + this.props.designer.lastGroupTool.table),
-               this.toolGroup("booth"), 
-               this.toolGroup("ga-" + this.props.designer.lastGroupTool.ga),
+                    className: "separator"
+                }),
+                // this.toolGroup("focalpoint"), 
+                console.log(this.props.designer.lastGroupTool.row),
+
+                this.toolGroup("row-" + this.props.designer.lastGroupTool.row),
+                this.toolGroup("section-" + this.props.designer.lastGroupTool.section),
+                this.toolGroup("table-" + this.props.designer.lastGroupTool.table),
+                // this.toolGroup("booth"),
+                this.toolGroup("ga-" + this.props.designer.lastGroupTool.ga),
                 this.toolGroup("shape-" + this.props.designer.lastGroupTool.shape),
-                 this.toolGroup("text"), this.toolGroup("image"),
-                  this.toolGroup("icon"), React.createElement("div", {
-                className: "flex-spacer"
-            }), this.toolGroup("hand"))
+                this.toolGroup("text"),
+                this.toolGroup("image"),
+                this.toolGroup("icon"),
+                React.createElement("div", {
+                    className: "flex-spacer"
+                }),
+                this.toolGroup("hand"))
         }
     }]), t
 }();
@@ -6108,7 +6223,7 @@ var UnlockableInspectorInput = function (e) {
             })), React.createElement("div", {
                 className: "value"
             }, React.createElement(Button, {
-                preset: "toolbar-icon-caption",
+                preset: "hud-icon",
                 type: "edit",
                 caption: d("set"),
                 onClick: function () {
@@ -7051,7 +7166,7 @@ Dialogs.FloatingDialogs.Preview = function (e) {
     }, {
         key: "renderPreview",
         value: function () {
-            this.chart = new seatsioNoConflict.SeatingChart({
+            this.chart = new mercatorNoConflict.SeatingChart({
                 divId: "chartPreview",
                 workspaceKey: this.props.document.workspaceKey,
                 chart: this.props.document.chartKey,

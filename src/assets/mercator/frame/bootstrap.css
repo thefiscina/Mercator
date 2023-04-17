@@ -17,284 +17,284 @@ body {
   color: #333;
   background-color: #fff;
 }
-#chartDesignerWrapper article,
-#chartDesignerWrapper aside,
-#chartDesignerWrapper details,
-#chartDesignerWrapper figcaption,
-#chartDesignerWrapper figure,
-#chartDesignerWrapper footer,
-#chartDesignerWrapper header,
-#chartDesignerWrapper hgroup,
-#chartDesignerWrapper main,
-#chartDesignerWrapper nav,
-#chartDesignerWrapper section,
-#chartDesignerWrapper summary {
+#frameIdMercator article,
+#frameIdMercator aside,
+#frameIdMercator details,
+#frameIdMercator figcaption,
+#frameIdMercator figure,
+#frameIdMercator footer,
+#frameIdMercator header,
+#frameIdMercator hgroup,
+#frameIdMercator main,
+#frameIdMercator nav,
+#frameIdMercator section,
+#frameIdMercator summary {
   display: block;
 }
-#chartDesignerWrapper audio,
-#chartDesignerWrapper canvas,
-#chartDesignerWrapper progress,
-#chartDesignerWrapper video {
+#frameIdMercator audio,
+#frameIdMercator canvas,
+#frameIdMercator progress,
+#frameIdMercator video {
   display: inline-block;
   vertical-align: baseline;
 }
-#chartDesignerWrapper audio:not([controls]) {
+#frameIdMercator audio:not([controls]) {
   display: none;
   height: 0;
 }
-#chartDesignerWrapper [hidden],
-#chartDesignerWrapper template {
+#frameIdMercator [hidden],
+#frameIdMercator template {
   display: none;
 }
-#chartDesignerWrapper a {
+#frameIdMercator a {
   background: transparent;
 }
-#chartDesignerWrapper a:active,
-#chartDesignerWrapper a:hover {
+#frameIdMercator a:active,
+#frameIdMercator a:hover {
   outline: 0;
 }
-#chartDesignerWrapper abbr[title] {
+#frameIdMercator abbr[title] {
   border-bottom: 1px dotted;
 }
-#chartDesignerWrapper b,
-#chartDesignerWrapper strong {
+#frameIdMercator b,
+#frameIdMercator strong {
   font-weight: bold;
 }
-#chartDesignerWrapper dfn {
+#frameIdMercator dfn {
   font-style: italic;
 }
-#chartDesignerWrapper h1 {
+#frameIdMercator h1 {
   margin: 0.67em 0;
   font-size: 2em;
 }
-#chartDesignerWrapper mark {
+#frameIdMercator mark {
   color: #000;
   background: #ff0;
 }
-#chartDesignerWrapper small {
+#frameIdMercator small {
   font-size: 80%;
 }
-#chartDesignerWrapper sub,
-#chartDesignerWrapper sup {
+#frameIdMercator sub,
+#frameIdMercator sup {
   position: relative;
   font-size: 75%;
   line-height: 0;
   vertical-align: baseline;
 }
-#chartDesignerWrapper sup {
+#frameIdMercator sup {
   top: -0.5em;
 }
-#chartDesignerWrapper sub {
+#frameIdMercator sub {
   bottom: -0.25em;
 }
-#chartDesignerWrapper img {
+#frameIdMercator img {
   border: 0;
 }
-#chartDesignerWrapper svg:not(:root) {
+#frameIdMercator svg:not(:root) {
   overflow: hidden;
 }
-#chartDesignerWrapper figure {
+#frameIdMercator figure {
   margin: 1em 40px;
 }
-#chartDesignerWrapper hr {
+#frameIdMercator hr {
   height: 0;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
-#chartDesignerWrapper pre {
+#frameIdMercator pre {
   overflow: auto;
 }
-#chartDesignerWrapper code,
-#chartDesignerWrapper kbd,
-#chartDesignerWrapper pre,
-#chartDesignerWrapper samp {
+#frameIdMercator code,
+#frameIdMercator kbd,
+#frameIdMercator pre,
+#frameIdMercator samp {
   font-family: monospace, monospace;
   font-size: 1em;
 }
-#chartDesignerWrapper button,
-#chartDesignerWrapper input,
-#chartDesignerWrapper optgroup,
-#chartDesignerWrapper select,
-#chartDesignerWrapper textarea {
+#frameIdMercator button,
+#frameIdMercator input,
+#frameIdMercator optgroup,
+#frameIdMercator select,
+#frameIdMercator textarea {
   margin: 0;
   font: inherit;
   color: inherit;
 }
-#chartDesignerWrapper button {
+#frameIdMercator button {
   overflow: visible;
 }
-#chartDesignerWrapper button,
-#chartDesignerWrapper select {
+#frameIdMercator button,
+#frameIdMercator select {
   text-transform: none;
 }
-#chartDesignerWrapper button,
-#chartDesignerWrapper input[type="button"],
-#chartDesignerWrapper input[type="reset"],
-#chartDesignerWrapper input[type="submit"] {
+#frameIdMercator button,
+#frameIdMercator input[type="button"],
+#frameIdMercator input[type="reset"],
+#frameIdMercator input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
 }
-#chartDesignerWrapper button[disabled],
-#chartDesignerWrapper input[disabled] {
+#frameIdMercator button[disabled],
+#frameIdMercator input[disabled] {
   cursor: default;
 }
-#chartDesignerWrapper button::-moz-focus-inner,
-#chartDesignerWrapper input::-moz-focus-inner {
+#frameIdMercator button::-moz-focus-inner,
+#frameIdMercator input::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
-#chartDesignerWrapper input {
+#frameIdMercator input {
   line-height: normal;
 }
-#chartDesignerWrapper input[type="checkbox"],
-#chartDesignerWrapper input[type="radio"] {
+#frameIdMercator input[type="checkbox"],
+#frameIdMercator input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
-#chartDesignerWrapper input[type="number"]::-webkit-inner-spin-button,
-#chartDesignerWrapper input[type="number"]::-webkit-outer-spin-button {
+#frameIdMercator input[type="number"]::-webkit-inner-spin-button,
+#frameIdMercator input[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
-#chartDesignerWrapper input[type="search"] {
+#frameIdMercator input[type="search"] {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   -webkit-appearance: textfield;
 }
-#chartDesignerWrapper input[type="search"]::-webkit-search-cancel-button,
-#chartDesignerWrapper input[type="search"]::-webkit-search-decoration {
+#frameIdMercator input[type="search"]::-webkit-search-cancel-button,
+#frameIdMercator input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-#chartDesignerWrapper fieldset {
+#frameIdMercator fieldset {
   padding: 0.35em 0.625em 0.75em;
   margin: 0 2px;
   border: 1px solid #c0c0c0;
 }
-#chartDesignerWrapper legend {
+#frameIdMercator legend {
   padding: 0;
   border: 0;
 }
-#chartDesignerWrapper textarea {
+#frameIdMercator textarea {
   overflow: auto;
 }
-#chartDesignerWrapper optgroup {
+#frameIdMercator optgroup {
   font-weight: bold;
 }
-#chartDesignerWrapper table {
+#frameIdMercator table {
   border-spacing: 0;
   border-collapse: collapse;
 }
-#chartDesignerWrapper td,
-#chartDesignerWrapper th {
+#frameIdMercator td,
+#frameIdMercator th {
   padding: 0;
 }
 @media print {
-  #chartDesignerWrapper * {
+  #frameIdMercator * {
     color: #000 !important;
     text-shadow: none !important;
     background: transparent !important;
     box-shadow: none !important;
   }
-  #chartDesignerWrapper a,
-  #chartDesignerWrapper a:visited {
+  #frameIdMercator a,
+  #frameIdMercator a:visited {
     text-decoration: underline;
   }
-  #chartDesignerWrapper a[href]:after {
+  #frameIdMercator a[href]:after {
     content: " (" attr(href) ")";
   }
-  #chartDesignerWrapper abbr[title]:after {
+  #frameIdMercator abbr[title]:after {
     content: " (" attr(title) ")";
   }
-  #chartDesignerWrapper a[href^="javascript:"]:after,
-  #chartDesignerWrapper a[href^="#"]:after {
+  #frameIdMercator a[href^="javascript:"]:after,
+  #frameIdMercator a[href^="#"]:after {
     content: "";
   }
-  #chartDesignerWrapper pre,
-  #chartDesignerWrapper blockquote {
+  #frameIdMercator pre,
+  #frameIdMercator blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
-  #chartDesignerWrapper thead {
+  #frameIdMercator thead {
     display: table-header-group;
   }
-  #chartDesignerWrapper tr,
-  #chartDesignerWrapper img {
+  #frameIdMercator tr,
+  #frameIdMercator img {
     page-break-inside: avoid;
   }
-  #chartDesignerWrapper img {
+  #frameIdMercator img {
     max-width: 100% !important;
   }
-  #chartDesignerWrapper p,
-  #chartDesignerWrapper h2,
-  #chartDesignerWrapper h3 {
+  #frameIdMercator p,
+  #frameIdMercator h2,
+  #frameIdMercator h3 {
     orphans: 3;
     widows: 3;
   }
-  #chartDesignerWrapper h2,
-  #chartDesignerWrapper h3 {
+  #frameIdMercator h2,
+  #frameIdMercator h3 {
     page-break-after: avoid;
   }
-  #chartDesignerWrapper select {
+  #frameIdMercator select {
     background: #fff !important;
   }
-  #chartDesignerWrapper .navbar {
+  #frameIdMercator .navbar {
     display: none;
   }
-  #chartDesignerWrapper .table td,
-  #chartDesignerWrapper .table th {
+  #frameIdMercator .table td,
+  #frameIdMercator .table th {
     background-color: #fff !important;
   }
-  #chartDesignerWrapper .btn > .caret,
-  #chartDesignerWrapper .dropup > .btn > .caret {
+  #frameIdMercator .btn > .caret,
+  #frameIdMercator .dropup > .btn > .caret {
     border-top-color: #000 !important;
   }
-  #chartDesignerWrapper .label {
+  #frameIdMercator .label {
     border: 1px solid #000;
   }
-  #chartDesignerWrapper .table {
+  #frameIdMercator .table {
     border-collapse: collapse !important;
   }
-  #chartDesignerWrapper .table-bordered th,
-  #chartDesignerWrapper .table-bordered td {
+  #frameIdMercator .table-bordered th,
+  #frameIdMercator .table-bordered td {
     border: 1px solid #ddd !important;
   }
 }
-#chartDesignerWrapper * {
+#frameIdMercator * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-#chartDesignerWrapper *:before,
-#chartDesignerWrapper *:after {
+#frameIdMercator *:before,
+#frameIdMercator *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-#chartDesignerWrapper input,
-#chartDesignerWrapper button,
-#chartDesignerWrapper select,
-#chartDesignerWrapper textarea {
+#frameIdMercator input,
+#frameIdMercator button,
+#frameIdMercator select,
+#frameIdMercator textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
-#chartDesignerWrapper a {
+#frameIdMercator a {
   color: #428bca;
   text-decoration: none;
 }
-#chartDesignerWrapper a:hover,
-#chartDesignerWrapper a:focus {
+#frameIdMercator a:hover,
+#frameIdMercator a:focus {
   color: #2a6496;
   text-decoration: underline;
 }
-#chartDesignerWrapper a:focus {
+#frameIdMercator a:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
-#chartDesignerWrapper figure {
+#frameIdMercator figure {
   margin: 0;
 }
-#chartDesignerWrapper img {
+#frameIdMercator img {
   vertical-align: middle;
 }

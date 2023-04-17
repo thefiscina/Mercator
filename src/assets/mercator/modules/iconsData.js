@@ -1,0 +1,2 @@
+const icons_fa = ["child", "male", "female", "wheelchair", "entrance", "emergencyExit", "stairs", "foodCourt", "bar-cocktail", "bar-beer", "cafe", "warning"];
+const icon_hud = ["close", "mouse-pointer", "ellipsis-h", "circle-o", "square-o", "square", "text-width", "image", "child", "mail-reply", "mail-forward", "trash-o", "minus", "plus"]
