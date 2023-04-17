@@ -1,0 +1,35 @@
+<div class="bg">
+    <div class="background">
+        <!-- <div class="shape shape1"></div>
+        <div class="shape shape2"></div> -->
+    </div>
+    <form>
+        <h3>Cadastre-se</h3>
+
+        <label for="username">Nome</label>
+        <input type="text" placeholder="Nome" id="username" [(ngModel)]="register.nome"
+            [ngModelOptions]="{standalone: true}">
+
+        <label for="username">CPF / CNPJ</label>
+        <input type="text" placeholder="CPF / CNPJ" id="CPF_CNPJ" [mask]="getCpfCnpjMask()"
+            [(ngModel)]="register.cpf_cnpj" [ngModelOptions]="{standalone: true}">
+
+        <label for="username">Email</label>
+        <input type="text" placeholder="Email" id="email" [(ngModel)]="register.email"
+            [ngModelOptions]="{standalone: true}">
+
+        <label for="password">Senha</label>
+        <input type="password" placeholder="Senha" id="password" [(ngModel)]="register.senha"
+            [ngModelOptions]="{standalone: true}">
+
+        <button [routerLink]="['/home']">Cadastrar</button>
+        <p class="link-register">Já possuo uma conta? Clique <span [routerLink]="['/login']">aqui</span> para realizar
+            seu acesso</p>
+        <!-- <button [routerLink]="['/home']">Registrar</button> -->
+
+        <!-- <div class="social">
+            <div class="go"><i class="fab fa-google"></i> Google</div>
+            <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
+        </div> -->
+    </form>
+</div>

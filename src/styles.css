@@ -17552,3 +17552,11 @@ File: scss
 .no-data-msg code {
     cursor: pointer;
 }
+.login-page{
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    height: 100%;
+}

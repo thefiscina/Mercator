@@ -900,7 +900,7 @@ mercator.V2Client = function (e, t) {
 //TRADUÇÃO
 mercator.Language = {};
 mercator.Language.pt = {
-    "select-cursor": "Selecionar",
+    "hand-o-up": "Selecionar",
     "select-brush": "Escova de seleção",
     "select-seats": "Selecionar assentos",
     "select-sameType": "Selecione o mesmo tipo",
@@ -6520,69 +6520,69 @@ const KEYS = {
     NUM_9: 57
 },
     TOOLS_HOTKEYS = {
-        v: {
-            toolName: "select-cursor",
-            uiEvent: "toolSelectCursor"
-        },
-        c: {
-            toolName: "select-brush",
-            uiEvent: "toolSelectBrush"
-        },
-        x: {
-            toolName: "select-seats",
-            uiEvent: "toolSelectSeats"
-        },
-        z: {
-            toolName: "select-sameType",
-            uiEvent: "toolSelectSameType"
-        },
-        a: {
-            toolName: "node",
-            uiEvent: "toolNode"
-        },
-        f: {
-            toolName: "focalpoint",
-            uiEvent: "toolFocalPoint"
-        },
-        s: {
-            toolName: "section",
-            uiEvent: "toolSection"
-        },
-        r: {
-            toolName: "row",
-            uiEvent: "toolRow"
-        },
-        e: {
-            toolName: "table",
-            uiEvent: "toolTable"
-        },
-        b: {
-            toolName: "booth",
-            uiEvent: "toolBooth"
-        },
-        o: {
-            toolName: "icon",
-            uiEvent: "toolIcon"
-        },
-        g: {
-            toolName: "ga",
-            uiEvent: "toolGa"
-        },
-        h: {
-            toolName: "shape",
-            uiEvent: "toolShape"
-        },
-        t: {
-            toolName: "text",
-            uiEvent: "toolText"
-        },
-        i: {
-            toolName: "image",
-            uiEvent: "toolImageObject"
-        },
-        " ": {
-            toolName: "hand"
-        }
+        // v: {
+        //     toolName: "hand-o-up",
+        //     uiEvent: "toolSelectCursor"
+        // },
+        // c: {
+        //     toolName: "select-brush",
+        //     uiEvent: "toolSelectBrush"
+        // },
+        // x: {
+        //     toolName: "select-seats",
+        //     uiEvent: "toolSelectSeats"
+        // },
+        // z: {
+        //     toolName: "select-sameType",
+        //     uiEvent: "toolSelectSameType"
+        // },
+        // a: {
+        //     toolName: "node",
+        //     uiEvent: "toolNode"
+        // },
+        // f: {
+        //     toolName: "focalpoint",
+        //     uiEvent: "toolFocalPoint"
+        // },
+        // s: {
+        //     toolName: "section",
+        //     uiEvent: "toolSection"
+        // },
+        // r: {
+        //     toolName: "row",
+        //     uiEvent: "toolRow"
+        // },
+        // e: {
+        //     toolName: "table",
+        //     uiEvent: "toolTable"
+        // },
+        // b: {
+        //     toolName: "booth",
+        //     uiEvent: "toolBooth"
+        // },
+        // o: {
+        //     toolName: "icon",
+        //     uiEvent: "toolIcon"
+        // },
+        // g: {
+        //     toolName: "ga",
+        //     uiEvent: "toolGa"
+        // },
+        // h: {
+        //     toolName: "shape",
+        //     uiEvent: "toolShape"
+        // },
+        // t: {
+        //     toolName: "text",
+        //     uiEvent: "toolText"
+        // },
+        // i: {
+        //     toolName: "image",
+        //     uiEvent: "toolImageObject"
+        // },
+        // " ": {
+        //     toolName: "hand"
+        // }
     },
     ALT_KEY = mercator.isMac ? "⌥" : "Alt",
     META_KEY = mercator.isMac ? "⌘" : "Ctrl",
@@ -11186,7 +11186,7 @@ mercator.MultipleRowModeState = class extends mercator.RowModeState {
 };
 
 mercator.ObjectsSelectedState = function (e, t, s) {
-    this.designer = e, this.selectedObjects = t, this.selectedObjectsSettings = s, this.selectedObjectsObject = null, this.hoveredObject = null, this.addObjectsModifierPressed = !1, this.selector = this.designer && this.designer.selector, this.name = "ObjectsSelectedState", this.toolName = "select-cursor", this.toolHint = "selected-hint", this.defaultToolText = {
+    this.designer = e, this.selectedObjects = t, this.selectedObjectsSettings = s, this.selectedObjectsObject = null, this.hoveredObject = null, this.addObjectsModifierPressed = !1, this.selector = this.designer && this.designer.selector, this.name = "ObjectsSelectedState", this.toolName = "hand-o-up", this.toolHint = "selected-hint", this.defaultToolText = {
         toolName: this.toolName,
         toolHint: this.toolHint
     }
@@ -11330,7 +11330,7 @@ mercator.ObjectsSelectedState = function (e, t, s) {
 };
 
 mercator.SelectionModeState = function (e) {
-    this.designer = e, this.name = "SelectionModeState", this.toolName = "select-cursor", this.toolHint = "select-hint", this.defaultToolText = {
+    this.designer = e, this.name = "SelectionModeState", this.toolName = "hand-o-up", this.toolHint = "select-hint", this.defaultToolText = {
         toolName: this.toolName,
         toolHint: this.toolHint
     }
@@ -11555,7 +11555,7 @@ mercator.MultipleRowExtendingState = function (t, i, e) {
 };
 
 mercator.SelectingState = function (e, t) {
-    this.fromPosition = e, this.designer = t, this.name = "SelectingState", this.toolName = "select-cursor", this.toolHint = "select-hint"
+    this.fromPosition = e, this.designer = t, this.name = "SelectingState", this.toolName = "hand-o-up", this.toolHint = "select-hint"
 }, mercator.SelectingState.prototype = new mercator.ToolState, mercator.SelectingState.prototype.init = function () {
     this.designer.chairMousePointer.hide(), this.designer.selector.startSelection(this.fromPosition)
 }, mercator.SelectingState.prototype.onCanvasMouseUp = function () {

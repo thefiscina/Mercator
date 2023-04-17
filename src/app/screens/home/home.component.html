@@ -1,7 +1,4 @@
 <div class="page-wrapper">
-    <!-- ============================================================== -->
-    <!-- Container fluid  -->
-    <!-- ============================================================== -->
     <div class="container-fluid">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
@@ -13,17 +10,12 @@
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         <li class="breadcrumb-item active">Meus mapas</li>
                     </ol>
-                    <!-- <button type="button" class="btn btn-success d-none d-lg-block m-l-15"> Upgrade To
-                        Pro</button> -->
+                    <button type="button" class="btn btn-success d-none d-lg-block m-l-15" [routerLink]="['/map']">
+                        Cadastrar Novo mapa
+                    </button>
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Start Page Content -->
-        <!-- ============================================================== -->
         <div class="row">
             <!-- column -->
             <div class="col-12">
@@ -53,7 +45,8 @@
                                     <tr *ngIf="listMaps.length ==0">
                                         <td colspan="5">
                                             <h6 class="card-subtitle no-data-msg">Nenhum mapa ainda cadastrado
-                                                <code [routerLink]="['/map']">clique aqui</code> para cadastrar seu primeiro.
+                                                <code [routerLink]="['/map']">clique aqui</code> para cadastrar seu
+                                                primeiro.
                                             </h6>
                                         </td>
                                     </tr>
@@ -100,7 +93,4 @@
             </div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- End Container fluid  -->
-    <!-- ============================================================== -->
 </div>

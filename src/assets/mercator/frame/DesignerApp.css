@@ -61,7 +61,7 @@
 @keyframes pulse-focus {
   from,
   to {
-    box-shadow: 0 0 0 2px #005cc5;
+    box-shadow: 0 0 0 2px #f35c57;
   }
   50% {
     box-shadow: 0 0 0 2px hsla(207, 100%, 55%, 0.7);
@@ -318,7 +318,7 @@
 }
 .inspector-datarow-label-caption-not-disabled:hover,
 .inspector-datarow-label-caption-not-disabled:active {
-  color: #005cc5;
+  color: #f35c57;
   padding-left: 4px;
 }
 .inspector-datarow-label-caption-not-disabled:hover {
@@ -412,6 +412,7 @@
   display: inline-block;
   position: relative;
   top: 0.05em;
+  color: #fff;
 }
 #designerApp .Button.preset-icon .caption,
 #designerApp .Button.preset-icon-caption .caption,
@@ -452,7 +453,7 @@
 }
 #designerApp .Button.preset-caption-icon.color-link:active,
 #designerApp .Button.preset-icon-caption.color-link:active {
-  color: #005cc5;
+  color: #f35c57;
 }
 #designerApp .Button.preset-caption-icon.color-link:disabled,
 #designerApp .Button.preset-icon-caption.color-link:disabled {
@@ -490,7 +491,7 @@
   opacity: hsla(207, 100%, 55%, 0.7);
 }
 #designerApp .Button.preset-icon-soft:not(:disabled):active {
-  color: #005cc5;
+  color: #f35c57;
   opacity: 1;
 }
 #designerApp .Button.preset-icon-soft.color-blue-selected {
@@ -508,7 +509,7 @@
 }
 #designerApp .Button.preset-icon-soft.color-blue-selected.selected:active {
   color: white;
-  background: #005cc5;
+  background: #f35c57;
 }
 #designerApp .Button.preset-icon-caption-small.with-caption {
   padding-left: 0.1em;
@@ -563,9 +564,9 @@
 #designerApp .Button.preset-toolbar-icon-dropdown-only:not(:disabled):not(.selected),
 #designerApp .Button.preset-switcher:not(:disabled):not(.selected),
 #designerApp .Button.preset-switcher-caption:not(:disabled):not(.selected) {
-  background: white;
+  background: #f57a55;
   box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.03), 0 1px 0 hsla(0, 0%, 0%, 0.1);
-  color: #242424;
+  color: #fff;
 }
 #designerApp .Button.preset-inspector-icon:not(:disabled):not(.selected):hover,
 #designerApp .Button.preset-toolbar-icon:not(:disabled):not(.selected):hover,
@@ -779,8 +780,8 @@
   align-items: center;
   pointer-events: none;
   position: absolute;
-  left: 46px;
-  top: 50%;
+  left: 10px;
+  top: 150%;
   height: 1em;
   padding: 3px 10px;
   margin-top: -0.8em;
@@ -797,7 +798,7 @@
   transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1), transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 #designerApp .Button.preset-tool > .tooltip .key-hint {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   min-width: 13px;
@@ -813,16 +814,16 @@
   text-align: center;
 }
 #designerApp .Button.preset-tool:not(:disabled):not(.selected) {
-  color: #242424;
+  color: #fff;
 }
 #designerApp .Button.preset-tool:not(:disabled):not(.selected):active {
-  color: #005cc5;
+  color: #f35c57;
 }
 #designerApp .Button.preset-tool:not(:disabled).selected {
-  color: #0784fa;
+  color: #f35c57;
 }
 #designerApp .Button.preset-tool:not(:disabled).selected:active {
-  color: #005cc5;
+  color: #f35c57;
 }
 #designerApp .Button.preset-tool:disabled {
   color: #b2b2b2;
@@ -1228,7 +1229,7 @@
 }
 #designerApp .TextInput:not(.disabled) > .caption:hover,
 #designerApp .TextInput:not(.disabled) > .caption:active {
-  color: #005cc5;
+  color: #f35c57;
   padding-left: 4px;
 }
 #designerApp .TextInput:not(.disabled) > .caption:hover {
@@ -1491,7 +1492,7 @@
   width: inherit;
 }
 #designerApp .NumericInput.scrubbing > .value > .label {
-  border-color: #005cc5;
+  border-color: #f35c57;
   box-shadow: 0 0 0 3px #0784fa;
 }
 #designerApp .NumericInput.scrubbing > .value > .label .icon-arrow-light-left,
@@ -1506,7 +1507,7 @@
 }
 #designerApp .NumericInput:not(.disabled) > .caption:hover,
 #designerApp .NumericInput:not(.disabled) > .caption:active {
-  color: #005cc5;
+  color: #f35c57;
   padding-left: 4px;
 }
 #designerApp .NumericInput:not(.disabled) > .caption:hover {
@@ -1525,6 +1526,7 @@
 #designerApp .NumericInput:not(.disabled) .caption,
 #designerApp .NumericInput:not(.disabled) .placeholder {
   cursor: ew-resize;
+  color: #fff;
 }
 #designerApp .NumericInput:not(.disabled):active > .value > .label {
   background: #fff;
@@ -1668,7 +1670,7 @@
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.2);
 }
 #designerApp .ColorInput .sample:active {
-  box-shadow: 0 0 0 2px #005cc5;
+  box-shadow: 0 0 0 2px #f35c57;
 }
 #designerApp .ColorInput.editing .sample {
   box-shadow: 0 0 0 2px #0784fa;
@@ -1926,7 +1928,7 @@
 }
 #designerApp .CheckboxInput:not(.disabled) > .caption:hover,
 #designerApp .CheckboxInput:not(.disabled) > .caption:active {
-  color: #005cc5;
+  color: #f35c57;
   padding-left: 4px;
 }
 #designerApp .CheckboxInput:not(.disabled) > .caption:hover {
@@ -2006,7 +2008,7 @@
 }
 #designerApp .PressAndHoldInput:not(.disabled) > .caption:hover,
 #designerApp .PressAndHoldInput:not(.disabled) > .caption:active {
-  color: #005cc5;
+  color: #f35c57;
   padding-left: 4px;
 }
 #designerApp .PressAndHoldInput:not(.disabled) > .caption:hover {
@@ -2221,7 +2223,7 @@
 }
 #designerApp .Inspector {
   position: relative;
-  width: 320px;
+  width: auto ;
   height: 100%;
   box-sizing: border-box;
   overflow-y: scroll;
@@ -2230,7 +2232,7 @@
   padding-bottom: 100px;
 }
 #designerApp .Inspector.forced-scrollbars {
-  width: 335px;
+  width: auto;
 }
 #designerApp .Inspector .container > .title {
   padding: 0.7em 2em 0;
@@ -2281,6 +2283,7 @@
 #designerApp .Inspector .InspectorSheet.wide > .NumericInput {
   padding-left: 12px;
   padding-right: 12px;
+  color: #fff;
 }
 #designerApp .Inspector .InspectorSheet.bottom-to-edge {
   padding-bottom: 0;
@@ -2427,7 +2430,7 @@
 }
 #designerApp .Inspector .InspectorSheet .DataRow.interactive:active {
   text-decoration: underline;
-  color: #005cc5;
+  color: #f35c57;
 }
 #designerApp .Inspector .InspectorSheet .DataRow.preset-warning {
   color: #db0e11;
@@ -2592,7 +2595,7 @@
   transform: rotate(-90deg);
 }
 #designerApp .CategoryInput .sample:active {
-  box-shadow: 0 0 0 2px #005cc5;
+  box-shadow: 0 0 0 2px #f35c57;
 }
 #designerApp .CategoryInput.editing .sample {
   box-shadow: 0 0 0 2px #0784fa;
@@ -2794,7 +2797,7 @@
   color: #0784fa;
 }
 #designerApp .CategoryPicker .CategoryPickerOption .editable .icon-accessible-new:active {
-  color: #005cc5 !important;
+  color: #f35c57 !important;
   text-shadow: 0 0 1px #0784fa;
 }
 #designerApp .CategoryPicker .CategoryPickerOption.accessible .editable .icon-accessible-new {
@@ -2846,7 +2849,7 @@
   color: #0784fa;
 }
 #designerApp .CategoryPicker .CategoryPickerOption .actions .Button:active {
-  color: #005cc5;
+  color: #f35c57;
 }
 #designerApp .CategoryPicker .CategoryPickerOption.editing {
   z-index: 1;
@@ -2920,7 +2923,7 @@
   color: #0784fa;
 }
 #designerApp .CategoryPicker .CategoryPickerOption.create .description:active {
-  color: #005cc5;
+  color: #f35c57;
 }
 #designerApp .CategoryPicker .CategoryPickerOption.disabled {
   pointer-events: none;
@@ -2955,7 +2958,8 @@
   padding: 10px;
 }
 #designerApp .NavigationHUD.align-left {
-  left: 45px;
+  right: 46px;
+  bottom: 0px;
 }
 #designerApp .NavigationHUD.align-right {
   right: 280px;
@@ -3151,7 +3155,8 @@
   align-items: center;
   justify-content: space-between;
   min-height: 1.8em;
-  background: white;
+  background: #2b2f3a;
+  color: #fff;
   padding: 0.3em 0.7em;
   box-sizing: border-box;
   margin-top: 1px;
@@ -3387,7 +3392,7 @@
 }
 #designerApp .FloatingDialog .list .item .rightValue .action:active {
   opacity: 1;
-  color: #005cc5;
+  color: #f35c57;
 }
 #designerApp .FloatingDialog .list .item .rightValue .TextInput {
   position: relative;
@@ -4586,7 +4591,7 @@
 }
 #designerApp .ToolPicker {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   height: 100%;
   box-sizing: border-box;
@@ -4596,7 +4601,7 @@
 }
 #designerApp .ToolPicker .toolGroup {
   position: relative;
-  width: 35px;
+  width: auto;
   border-radius: 4px;
   transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1), transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), height 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -4631,7 +4636,7 @@
   padding: 4px;
   border: 1px solid hsla(0, 0%, 0%, 0.08);
   border-radius: 6px;
-  background: hsl(0, 0%, 96%);
+  background: hsl(224deg 14.85% 19.8%);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   animation: pop-in 0.4s cubic-bezier(0.37, 1.98, 0.43, 0.76);
   transform-origin: 0 26px;
@@ -4880,7 +4885,7 @@
   color: #0784fa;
 }
 #designerApp .modal-container > .modal-dialog .select:active {
-  color: #005cc5;
+  color: #f35c57;
 }
 #designerApp .modal-container > .modal-dialog .danger {
   color: #db0e11;
@@ -5772,7 +5777,7 @@
 }
 #designerApp .SliderInput.scrubbing .value > .slider .handle {
   border-width: 1px;
-  border-color: #005cc5;
+  border-color: #f35c57;
   transition: none;
 }
 #designerApp .SliderInput.scrubbing .value > .icon-arrow-light-left,
@@ -5791,7 +5796,7 @@
 }
 #designerApp .SliderInput:not(.disabled) > .caption:hover,
 #designerApp .SliderInput:not(.disabled) > .caption:active {
-  color: #005cc5;
+  color: #f35c57;
   padding-left: 4px;
 }
 #designerApp .SliderInput:not(.disabled) > .caption:hover {
@@ -6101,8 +6106,9 @@ body::-webkit-scrollbar {
 }
 #designerApp .Panel {
   pointer-events: all;
-  background: hsl(0, 0%, 96%);
+  background: hsl(224deg 14.85% 19.8%);
   z-index: 1;
+  color: #fff;
 }
 #designerApp .Panel > .group,
 #designerApp .Panel > .group > .group {
@@ -6150,8 +6156,8 @@ body::-webkit-scrollbar {
   width: 100%;
   height: 45px;
   padding: 0;
-  border-bottom: 1px solid #d8d8d8;
-  background: linear-gradient(to top, #efefef, #eaeaea);
+  border-bottom: 1px solid #2b2f3a;
+  background: linear-gradient(to top, #2b2f3a, #2b2f3a);
 }
 #designerApp .Panel.snap-top .ContextActions {
   display: flex;
@@ -6170,13 +6176,20 @@ body::-webkit-scrollbar {
   padding: 5px 0;
   height: 100%;
   border-right: 1px solid hsla(0, 0%, 0%, 0.08);
+  display: none;
 }
 #designerApp .Panel.snap-right {
-  position: absolute;
+  /* position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
-  border-left: 1px solid hsla(0, 0%, 0%, 0.08);
+  border-left: 1px solid hsla(0, 0%, 0%, 0.08); */
+  position: absolute;
+    top: 0px;    
+    left: 0;
+    border-left: 1px solid hsla(0, 0%, 0%, 0.08);
+    bottom: 0;
+    z-index: 0;
 }
 #designerApp .StatusBar {
   display: flex;

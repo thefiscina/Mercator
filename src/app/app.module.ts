@@ -26,6 +26,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ModalAlertComponent } from './components/modal-alert/modal-alert.component';
 import { MapComponent } from './screens/map/map.component';
+import { RegisterComponent } from './screens/register/register.component';
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -41,7 +42,8 @@ registerLocaleData(localePt, 'pt');
     NavBarComponent,
     AutofocusDirective,
     ModalAlertComponent,
-    MapComponent
+    MapComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

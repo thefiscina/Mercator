@@ -29,7 +29,7 @@ export class AppComponent {
 
   checkUrl(url: any) {
     if (url) {
-      if (url.includes('login')) {
+      if (url.includes('login') || url.includes('register')) {
         return false;
       } else {
         return true;

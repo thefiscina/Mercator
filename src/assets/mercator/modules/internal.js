@@ -232,6 +232,7 @@ var _extends = Object.assign || function (e) {
                                             hideDocumentName: !this.props.designer.atMasterSubChart,
                                             busyIndicators: this.props.busyIndicators
                                         }),
+
                                         // React.createElement(Button, {
                                         //     preset: "toolbar-icon",
                                         //     type: "view",
@@ -250,13 +251,17 @@ var _extends = Object.assign || function (e) {
                                         //         return t.toggleColorScheme()
                                         //     }
                                         // })
+                                        React.createElement(ToolPicker, {
+                                            designer: this.props.designer,
+                                            disableTooltips: m
+                                        })
                                     ),
                                     React.createElement("div", {
                                         className: "group designer"
                                     },
                                         React.createElement(Button, {
                                             preset: "toolbar-icon",
-                                            type: "undo",
+                                            type: "mail-reply",
                                             caption: d("undo") + " (" + buildShortcut([META_KEY, "Z"]) + ")",
                                             disabled: !this.props.uiState.canUndo,
                                             onClick: function () {
@@ -265,7 +270,7 @@ var _extends = Object.assign || function (e) {
                                         }),
                                         React.createElement(Button, {
                                             preset: "toolbar-icon",
-                                            type: "redo",
+                                            type: "mail-forward",
                                             caption: d("redo") + " (" + buildShortcut([META_KEY, SHIFT_KEY, "Z"]) + ")",
                                             disabled: !this.props.uiState.canRedo,
                                             onClick: function () {
@@ -301,63 +306,77 @@ var _extends = Object.assign || function (e) {
                             )),
                         React.createElement("div", {
                             className: "panel-row grow"
-                        }, React.createElement(Panel, {
-                            snap: "left"
-                        }, React.createElement(ToolPicker, {
-                            designer: this.props.designer,
-                            disableTooltips: m
-                        })), React.createElement(CanvasGrabber, {
-                            enabled: this.props.designer.enableCanvasGrabber,
-                            spacebarIsPressed: this.props.designer.spacebarIsPressed
-                        }), React.createElement(NavigationHUD, {
-                            align: "left",
-                            zoomLevel: this.props.designer.zoomLevel,
-                            maxZoomLevel: this.props.designer.maxZoomLevel,
-                            minZoomLevel: this.props.designer.minZoomLevel
-                        }), (!this.props.designer.disabledFeatures.includes(mercator.Features.Type.MULTIPLE_FLOORS) || this.props.document.floors > 1) && React.createElement(FloorPickerHUD, {
-                            currentFloor: this.props.designer.currentFloor,
-                            floors: this.props.document.floors,
-                            canCreateNewFloor: this.props.designer.canCreateNewFloor,
-                            canDeleteFloors: !this.props.designer.disabledFeatures.includes(mercator.Features.Type.MULTIPLE_FLOORS)
-                        }), React.createElement(StatusBar, {
-                            designer: this.props.designer,
-                            selection: this.props.selection
-                        }), React.createElement(ChartOverlayMessages, {
-                            messages: this.props.overlayMessages
-                        }), React.createElement(Panel, {
-                            snap: "right"
                         },
-                            React.createElement(InspectorPanel, this.props))))), (!E || "chrome" !== c) && React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, p, {
-                                in: !m && "venueTypeSelector" === S
+                            React.createElement(Panel, {
+                                snap: "left"
+                            },
+                                //  React.createElement(ToolPicker, {
+                                //     designer: this.props.designer,
+                                //     disableTooltips: m
+                                // })
+                            ), React.createElement(CanvasGrabber, {
+                                enabled: this.props.designer.enableCanvasGrabber,
+                                spacebarIsPressed: this.props.designer.spacebarIsPressed
+                            }), React.createElement(NavigationHUD, {
+                                align: "left",
+                                zoomLevel: this.props.designer.zoomLevel,
+                                maxZoomLevel: this.props.designer.maxZoomLevel,
+                                minZoomLevel: this.props.designer.minZoomLevel
                             }),
-                                React.createElement(Dialogs.ModalDialogs.VenueTypeSelectorDialog, null)), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, p, {
-                                    in: !m && "referenceChartStartupDialog" === S
-                                }), React.createElement(Dialogs.ModalDialogs.ReferenceChartStartupDialog, {
-                                    busyIndicators: this.props.busyIndicators
-                                })),
+                            (!this.props.designer.disabledFeatures.includes(mercator.Features.Type.MULTIPLE_FLOORS) || this.props.document.floors > 1) && React.createElement(FloorPickerHUD, {
+                                currentFloor: this.props.designer.currentFloor,
+                                floors: this.props.document.floors,
+                                canCreateNewFloor: this.props.designer.canCreateNewFloor,
+                                canDeleteFloors: !this.props.designer.disabledFeatures.includes(mercator.Features.Type.MULTIPLE_FLOORS)
+                            }),
+                            // React.createElement(StatusBar, {
+                            //     designer: this.props.designer,
+                            //     selection: this.props.selection
+                            // }),
+                            // React.createElement(ChartOverlayMessages, {
+                            //     messages: this.props.overlayMessages
+                            // }),
+                            React.createElement(Panel, {
+                                snap: "right"
+                            },
+                                React.createElement(InspectorPanel, this.props))))), (!E || "chrome" !== c) && React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, p, {
+                                    in: !m && "venueTypeSelector" === S
+                                }),
+                                    React.createElement(Dialogs.ModalDialogs.VenueTypeSelectorDialog, null)), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, p, {
+                                        in: !m && "referenceChartStartupDialog" === S
+                                    }), React.createElement(Dialogs.ModalDialogs.ReferenceChartStartupDialog, {
+                                        busyIndicators: this.props.busyIndicators
+                                    })),
                     React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, h, {
                         in: !m && "publishDraft" === S
                     }), React.createElement(Dialogs.ModalDialogs.PublishDialog, {
                         globalStats: this.props.document.globalStats,
                         hasMultipleFloors: this.props.document.floors > 1
-                    })), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, h, {
+                    })),
+                    React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, h, {
                         in: !m && "newFloor" === S
-                    }), React.createElement(Dialogs.ModalDialogs.NewFloorDialog, null)), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, h, {
-                        in: !m && "labelEditingWarning" === S
-                    }), React.createElement(Dialogs.ModalDialogs.LabelEditingWarning, this.props)), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, h, {
-                        in: !m && "GABookableAsAWholeWarning" === S
-                    }), React.createElement(Dialogs.ModalDialogs.GABookableAsAWholeWarning, this.props)), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, h, {
-                        in: !m && "categoryKeyEditWarning" === S
-                    }), React.createElement(Dialogs.ModalDialogs.CategoryKeyEditWarning, this.props)), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, h, {
-                        in: !m && "exitWithErrors" === S
-                    }), React.createElement(Dialogs.ModalDialogs.ExitDialog, {
-                        globalStats: this.props.document.globalStats,
-                        hasMultipleFloors: this.props.document.floors > 1
-                    })), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, g, {
+                    }),
+                        React.createElement(Dialogs.ModalDialogs.NewFloorDialog, null)), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, h, {
+                            in: !m && "labelEditingWarning" === S
+                        }),
+                            React.createElement(Dialogs.ModalDialogs.LabelEditingWarning, this.props)), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, h, {
+                                in: !m && "GABookableAsAWholeWarning" === S
+                            }),
+                                React.createElement(Dialogs.ModalDialogs.GABookableAsAWholeWarning, this.props)), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, h, {
+                                    in: !m && "categoryKeyEditWarning" === S
+                                }),
+                                    React.createElement(Dialogs.ModalDialogs.CategoryKeyEditWarning, this.props)), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, h, {
+                                        in: !m && "exitWithErrors" === S
+                                    }), React.createElement(Dialogs.ModalDialogs.ExitDialog, {
+                                        globalStats: this.props.document.globalStats,
+                                        hasMultipleFloors: this.props.document.floors > 1
+                                    })),
+                    React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, g, {
                         in: !m && "referenceChartDialog" === S
                     }), React.createElement("div", {
                         className: "designer-modal-shade"
-                    })), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, {
+                    })),
+                    React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, {
                         classNames: "slide-in-up",
                         timeout: 700,
                         unmountOnExit: !0
@@ -365,7 +384,8 @@ var _extends = Object.assign || function (e) {
                         in: !m && "referenceChartDialog" === S
                     }), React.createElement(Dialogs.ModalDialogs.ReferenceChartDialog, _extends({}, this.props, {
                         referenceChartScale: this.props.document.referenceChartScale
-                    }))), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, h, {
+                    }))),
+                    React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, h, {
                         in: !m && "keyboardShortcuts" === S
                     }), React.createElement(Dialogs.ModalDialogs.KeyboardShortcuts, null)), React.createElement(ReactTransitionGroup.CSSTransition, _extends({}, p, {
                         in: !m && !E && !S
@@ -1048,7 +1068,7 @@ var Button = function (e) {
                         className: "wrapper"
                     }, React.createElement("div", {
                         key: "icon",
-                        className: "icon icon-" + this.props.type
+                        className: "icon fa fa-" + this.props.type //ALTERACAO ICONE BTN
                     }), t && React.createElement("div", {
                         key: "caption",
                         className: "caption"
@@ -1057,7 +1077,7 @@ var Button = function (e) {
                 case "toolbar-icon-caption":
                     e = [React.createElement("div", {
                         key: "icon",
-                        className: "icon icon-" + this.props.type
+                        className: "icon fa fa-" + this.props.type
                     }), React.createElement("div", {
                         key: "caption",
                         className: "caption"
@@ -1067,7 +1087,7 @@ var Button = function (e) {
                 case "float-icon":
                     e = [React.createElement("div", {
                         key: "icon",
-                        className: "icon icon-" + this.props.type
+                        className: "icon fa fa-" + this.props.type
                     }), React.createElement("div", {
                         key: "tooltip",
                         className: "tooltip"
@@ -1082,7 +1102,7 @@ var Button = function (e) {
                 case "switcher":
                     o = this.compositeTooltip(), e = React.createElement("div", {
                         key: "icon",
-                        className: "icon icon-" + this.props.type
+                        className: "icon fa fa-" + this.props.type
                     });
                     break;
                 case "hud-caption":
@@ -1096,7 +1116,7 @@ var Button = function (e) {
                 case "toolbar-icon-dropdown-only":
                     o = this.compositeTooltip(), e = [React.createElement("div", {
                         key: "icon",
-                        className: "icon icon-" + this.props.type
+                        className: "icon fa fa-" + this.props.type
                     }), React.createElement("div", {
                         key: "icon-arrow",
                         className: "dropdown icon-arrow-medium-down",
@@ -2489,87 +2509,89 @@ var ContextActions = function (t) {
     function e(t) {
         _classCallCheck(this, e);
         var n = _possibleConstructorReturn(this, (e.__proto__ || Object.getPrototypeOf(e)).call(this, t));
-        return n.childRefs = {}, n.state = {
-            ga: "ga-rectangle",
-            shape: "shape-rectangle",
-            table: "table-round",
-            contextualMenuOpened: null
-        }, n.actionsToolbar = [
-            ["align-objects", "normalize-rows"], "separator", "flip-horizontal", "flip-vertical", "separator", "duplicate", "copy", "paste", "delete"
-        ], n.actionsUiEvent = {
-            "align-objects": "*",
-            "normalize-rows": "actionNormalizeRows",
-            "flip-horizontal": "actionFlipHorizontal",
-            "flip-vertical": "actionFlipVertical",
-            duplicate: "actionDuplicate",
-            copy: "actionCopy",
-            paste: "actionPaste",
-            delete: "actionDelete"
-        }, n.contextMenuActions = {
-            "normalize-rows": [{
-                type: "straighten",
-                caption: d("straighten"),
-                uiEvent: "actionStraighten"
-            }, {
-                type: "space-evenly",
-                caption: d("space-evenly"),
-                uiEvent: "actionEvenlySpace"
-            }, {
-                type: "separator"
-            }, {
-                type: "align-left",
-                caption: d("align-left"),
-                uiEvent: "actionAlignLeft"
-            }, {
-                type: "align-center",
-                caption: d("align-center"),
-                uiEvent: "actionAlignCenter"
-            }, {
-                type: "align-right",
-                caption: d("align-right"),
-                uiEvent: "actionAlignRight"
-            }],
-            "align-objects": [{
-                type: "align-objects-left",
-                caption: d("align-left"),
-                uiEvent: "actionAlignObjectsLeft"
-            }, {
-                type: "align-objects-horizontal-center",
-                caption: d("align-center"),
-                uiEvent: "actionAlignObjectsHorizontalCenter",
-                default: !0
-            }, {
-                type: "align-objects-right",
-                caption: d("align-right"),
-                uiEvent: "actionAlignObjectsRight"
-            }, {
-                type: "space-objects-vertically",
-                caption: d("space-vertically"),
-                uiEvent: "actionSpaceObjectsVertically"
-            }, {
-                type: "separator"
-            }, {
-                type: "align-objects-top",
-                caption: d("align-top"),
-                uiEvent: "actionAlignObjectsTop"
-            }, {
-                type: "align-objects-vertical-center",
-                caption: d("align-middle"),
-                uiEvent: "actionAlignObjectsVerticalCenter"
-            }, {
-                type: "align-objects-bottom",
-                caption: d("align-bottom"),
-                uiEvent: "actionAlignObjectsBottom"
-            }, {
-                type: "space-objects-horizontally",
-                caption: d("space-horizontally"),
-                uiEvent: "actionSpaceObjectsHorizontally"
-            }]
-        }, n.hotkeys = {
-            duplicate: [META_KEY, "J"].join(SHORTCUT_CONNECTOR),
-            copy: [META_KEY, "C"].join(SHORTCUT_CONNECTOR),
-            paste: [META_KEY, "V"].join(SHORTCUT_CONNECTOR)
-        }, n
+        return n.childRefs = {},
+            n.state = {
+                ga: "ga-rectangle",
+                shape: "shape-rectangle",
+                table: "table-round",
+                contextualMenuOpened: null
+            }, n.actionsToolbar = [
+                "delete"
+                // ["align-objects", "normalize-rows"], "separator", "flip-horizontal", "flip-vertical", "separator", "duplicate", "copy", "paste", "delete"
+            ], n.actionsUiEvent = {
+                "align-objects": "*",
+                "normalize-rows": "actionNormalizeRows",
+                "flip-horizontal": "actionFlipHorizontal",
+                "flip-vertical": "actionFlipVertical",
+                duplicate: "actionDuplicate",
+                copy: "actionCopy",
+                paste: "actionPaste",
+                delete: "actionDelete"
+            }, n.contextMenuActions = {
+                "normalize-rows": [{
+                    type: "straighten",
+                    caption: d("straighten"),
+                    uiEvent: "actionStraighten"
+                }, {
+                    type: "space-evenly",
+                    caption: d("space-evenly"),
+                    uiEvent: "actionEvenlySpace"
+                }, {
+                    type: "separator"
+                }, {
+                    type: "align-left",
+                    caption: d("align-left"),
+                    uiEvent: "actionAlignLeft"
+                }, {
+                    type: "align-center",
+                    caption: d("align-center"),
+                    uiEvent: "actionAlignCenter"
+                }, {
+                    type: "align-right",
+                    caption: d("align-right"),
+                    uiEvent: "actionAlignRight"
+                }],
+                "align-objects": [{
+                    type: "align-objects-left",
+                    caption: d("align-left"),
+                    uiEvent: "actionAlignObjectsLeft"
+                }, {
+                    type: "align-objects-horizontal-center",
+                    caption: d("align-center"),
+                    uiEvent: "actionAlignObjectsHorizontalCenter",
+                    default: !0
+                }, {
+                    type: "align-objects-right",
+                    caption: d("align-right"),
+                    uiEvent: "actionAlignObjectsRight"
+                }, {
+                    type: "space-objects-vertically",
+                    caption: d("space-vertically"),
+                    uiEvent: "actionSpaceObjectsVertically"
+                }, {
+                    type: "separator"
+                }, {
+                    type: "align-objects-top",
+                    caption: d("align-top"),
+                    uiEvent: "actionAlignObjectsTop"
+                }, {
+                    type: "align-objects-vertical-center",
+                    caption: d("align-middle"),
+                    uiEvent: "actionAlignObjectsVerticalCenter"
+                }, {
+                    type: "align-objects-bottom",
+                    caption: d("align-bottom"),
+                    uiEvent: "actionAlignObjectsBottom"
+                }, {
+                    type: "space-objects-horizontally",
+                    caption: d("space-horizontally"),
+                    uiEvent: "actionSpaceObjectsHorizontally"
+                }]
+            }, n.hotkeys = {
+                duplicate: [META_KEY, "J"].join(SHORTCUT_CONNECTOR),
+                copy: [META_KEY, "C"].join(SHORTCUT_CONNECTOR),
+                paste: [META_KEY, "V"].join(SHORTCUT_CONNECTOR)
+            }, n
     }
     return _inherits(e, React.Component), _createClass(e, [{
         key: "shouldComponentUpdate",
@@ -5350,7 +5372,7 @@ function StatusBar(e) {
         c = void 0,
         n = e.selection.count,
         a = e.selection.subCount;
-    return ["select-cursor", "select-brush", "select-seats", "category", "label"].includes(e.designer.tool) && n + a > 0 && (n > 0 ? c = d("objects-selected-count", {
+    return ["hand-o-up", "select-brush", "select-seats", "category", "label"].includes(e.designer.tool) && n + a > 0 && (n > 0 ? c = d("objects-selected-count", {
         smart_count: n
     }) + (a > n ? " (" + d("children-count", {
         smart_count: a
@@ -5747,30 +5769,35 @@ var ToolPicker = function (e) {
             showGroup: !1,
             hoverTooltip: !1
         }, o.definitions = {
-            "select-cursor": ["selectCursor", "select-cursor", "toolSelectCursor"],
-            "select-brush": ["selectBrush", "select-brush", "toolSelectBrush"],
-            "select-seats": ["selectSeats", "select-seats", "toolSelectSeats"],
-            "select-sameType": ["selectSameType", "select-sameType", "toolSelectSameType"],
-            node: [mercator.Features.Type.NODES, "node", "toolNode"],
+            "hand-o-up": ["selectCursor", "hand-o-up", "toolSelectCursor"],
+            // "select-brush": ["selectBrush", "select-brush", "toolSelectBrush"],
+            // "select-seats": ["selectSeats", "select-seats", "toolSelectSeats"],
+            // "select-sameType": ["selectSameType", "select-sameType", "toolSelectSameType"],
+            // node: [mercator.Features.Type.NODES, "node", "toolNode"],
+            // "row-single": [mercator.Features.Type.ROWS, "row-single", "toolRowSingle"],
+            // "row-segmented": [mercator.Features.Type.ROWS, "row-segmented", "toolRowSegmented"],
+            // "row-multiple": [mercator.Features.Type.ROWS, "row-multiple", "toolRowMultiple"],
+            // "section-polygon": [mercator.Features.Type.SECTIONS, "section-polygon", "toolSection"],
+            // "section-rectangle": [mercator.Features.Type.SECTIONS, "section-rectangle", "toolSection"],
+            
             "row-single": [mercator.Features.Type.ROWS, "row-single", "toolRowSingle"],
-            "row-segmented": [mercator.Features.Type.ROWS, "row-segmented", "toolRowSegmented"],
-            "row-multiple": [mercator.Features.Type.ROWS, "row-multiple", "toolRowMultiple"],
-            "section-polygon": [mercator.Features.Type.SECTIONS, "section-polygon", "toolSection"],
-            "section-rectangle": [mercator.Features.Type.SECTIONS, "section-rectangle", "toolSection"],
-            booth: [mercator.Features.Type.BOOTHS, "booth", "toolBooth"],
+            // booth: [mercator.Features.Type.BOOTHS, "booth", "toolBooth"],
             "ga-rectangle": [mercator.Features.Type.AREAS, "ga-rectangle", "toolGaRectangle"],
             "ga-ellipse": [mercator.Features.Type.AREAS, "ga-ellipse", "toolGaEllipse"],
             "ga-polygon": [mercator.Features.Type.AREAS, "ga-polygon", "toolGaPolygon"],
+            
             "shape-rectangle": [mercator.Features.Type.SHAPES, "shape-rectangle", "toolShapeRectangle"],
             "shape-ellipse": [mercator.Features.Type.SHAPES, "shape-ellipse", "toolShapeEllipse"],
             "shape-polygon": [mercator.Features.Type.SHAPES, "shape-polygon", "toolShapePolygon"],
+            
             "table-round": [mercator.Features.Type.TABLES, "table-round", "toolTableRound"],
             "table-rectangle": [mercator.Features.Type.TABLES, "table-rectangle", "toolTableRectangle"],
+            
             text: [mercator.Features.Type.TEXTS, "text", "toolText"],
             image: [mercator.Features.Type.IMAGES, "image", "toolImageObject"],
-            focalpoint: [mercator.Features.Type.FOCAL_POINT, "focalpoint", "toolFocalPoint"],
             icon: [mercator.Features.Type.ICONS, "icon", "toolIcon"],
-            hand: [mercator.Features.Type.HAND, "hand", "toolHand"]
+            // focalpoint: [mercator.Features.Type.FOCAL_POINT, "focalpoint", "toolFocalPoint"],
+            // hand: [mercator.Features.Type.HAND, "hand", "toolHand"]
         }, o.handleClickOutside = o.handleClickOutside.bind(o), o.onMouseOver = o.onMouseOver.bind(o), o.onMouseOut = o.onMouseOut.bind(o), o
     }
     return _inherits(t, React.Component), _createClass(t, [{
@@ -5906,7 +5933,8 @@ var ToolPicker = function (e) {
                 className: "indicator icon-tool-group-indicator"
             }) : null
         }
-    }, {
+    }, 
+    {
         key: "toolSiblings",
         value: function (e) {
             var t = this,
@@ -5917,7 +5945,8 @@ var ToolPicker = function (e) {
                 return t.tool(e, !1)
             })) : null
         }
-    }, {
+    }
+    , {
         key: "componentDidMount",
         value: function () {
             var e = this,
@@ -5980,9 +6009,23 @@ var ToolPicker = function (e) {
                 ref: function (t) {
                     return e.wrapperRef = t
                 }
-            }, this.toolGroup("select-cursor"), this.toolGroup("select-brush"), this.toolGroup("select-seats"), this.toolGroup("select-sameType"), this.toolGroup("node"), React.createElement("div", {
+            }, this.toolGroup("hand-o-up"),
+             this.toolGroup("select-brush"),
+              this.toolGroup("select-seats"), 
+              this.toolGroup("select-sameType"),
+               this.toolGroup("node"),
+                React.createElement("div", {
                 className: "separator"
-            }), this.toolGroup("focalpoint"), this.toolGroup("row-" + this.props.designer.lastGroupTool.row), this.toolGroup("section-" + this.props.designer.lastGroupTool.section), this.toolGroup("table-" + this.props.designer.lastGroupTool.table), this.toolGroup("booth"), this.toolGroup("ga-" + this.props.designer.lastGroupTool.ga), this.toolGroup("shape-" + this.props.designer.lastGroupTool.shape), this.toolGroup("text"), this.toolGroup("image"), this.toolGroup("icon"), React.createElement("div", {
+            }), 
+            // this.toolGroup("focalpoint"), 
+            this.toolGroup("row-" + this.props.designer.lastGroupTool.row),
+             this.toolGroup("section-" + this.props.designer.lastGroupTool.section),
+              this.toolGroup("table-" + this.props.designer.lastGroupTool.table),
+               this.toolGroup("booth"), 
+               this.toolGroup("ga-" + this.props.designer.lastGroupTool.ga),
+                this.toolGroup("shape-" + this.props.designer.lastGroupTool.shape),
+                 this.toolGroup("text"), this.toolGroup("image"),
+                  this.toolGroup("icon"), React.createElement("div", {
                 className: "flex-spacer"
             }), this.toolGroup("hand"))
         }
