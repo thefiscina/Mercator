@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 .bg {
-    background: linear-gradient(to right, #ff512f, #f09819);
+    background: linear-gradient(to right, #5e271c, #a73a3a);
     height: 100%;
     width: 100%;
     position: absolute;
